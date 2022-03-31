@@ -40,7 +40,8 @@ $(PATH_BUILD)/%.o:	%.cpp
 						@ mkdir -p $(dir $@)
 						@ $(CC) $(FLAG_COMP) -c $< -o $@
 
-clean:					@ $(RM) &(PATH_BUILD)
+clean:					
+						@ $(RM) $(PATH_BUILD)
 						@ printf "$(_INFO) Deleted files and directory\n"
 
 fclean:				clean

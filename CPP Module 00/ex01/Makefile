@@ -2,11 +2,12 @@ NAME		:=		phoneBook
 
 PATH_SRC	:=		src
 PATH_BUILD	:=		build
+PATH_INV	:=		inc
 
 SRCS		:=		$(shell find $(PATH_SRC) -name *.cpp)
 OBJS		:=		$(SRCS:%.cpp=$(PATH_BUILD)/%.o)
 DEPS		:=		$(OBJS:.o=.d)
-INC_DIRS	:=		$(shell find $(PATH_SRC) -type d)
+INC_DIRS	:=		$(shell find $(PATH_INC) -type d)
 
 CC			:=		c++
 
@@ -40,7 +41,8 @@ $(PATH_BUILD)/%.o:	%.cpp
 						@ mkdir -p $(dir $@)
 						@ $(CC) $(FLAG_COMP) -c $< -o $@
 
-clean:					@ $(RM) &(PATH_BUILD)
+clean:					
+						@ $(RM) $(PATH_BUILD)
 						@ printf "$(_INFO) Deleted files and directory\n"
 
 fclean:				clean
