@@ -1,33 +1,29 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-#include <iostream> 								// preprocerror directive
+#include <iostream> 								
 #include <string>
+#include <vector>
 
 using namespace std;
 
-class Contact{										// class
- private:											// access specifier: private attributes		
+class Contact{
 	string first_name;					
 	string last_name;
 	string nickname;
 	string phone_number;
 	string darkest_secret;
- public:											// access specifier: public attributes
-	Contact();										// constructor: no parameters
-	Contact(string, string, string, int, string);	// constructor: object with all the requirements
-	Contact(const Contact&);						// constructor: copy object
 
-	string getFirstName();							// "get" method to access a private attribute 
-	string getLastName();
-	string getNickname();
-	string getPhoneNumber();
-	string getDarkestSecret();
-	bool setFirstName(string);							// "set" method to access a private attribute 
-	bool setLastName(string);								// Implemented to return false if they fail															
-	bool setNickname(string);	
-	bool setPhoneNumber(string);
-	bool setDarkestSecret(string);
+ public:
+	void ADD (string first_name, string last_name, string nickname, string phone_number, string darkest_secret);
+	string SEARCH();
+	void EXIT(); 
+
 };
 
-#endif /* CONTACT_H */
+class PhoneBook{
+	vector<Contact> contact_list[8];
+	int index;
+};
+
+#endif /* PHONEBOOK_HPP */

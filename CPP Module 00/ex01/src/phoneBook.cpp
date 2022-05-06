@@ -1,62 +1,45 @@
 #include "../inc/phoneBook.hpp"
-using namespace std;
 
-/* 	NAMING CONVENCTIONS: 
-	User-defined class names and functions starts with a capital letter 
-	and has a capital letter for each new word, with no underscores. 
-	Variable names are all lowercase, with underscores between words.
-
-	STEP-BY-STEP
-		Add libraries
-		Create the contact class
-			Class name
-			Access specifier
-			Constructor
-			Attributes
-			Method functions "setters & getters"
-*/
-
-bool Contact::setFirstName(string name) {
-	if (name == "") {
-		return false;
-	}
-	first_name = name;
-	return true;
+void	printOptions()
+{
+	cout << "\n--------------------------------------";
+	cout << "\nChoose an option:\n\n";
+	cout << "1) Add a contact\n";
+	cout << "2) Search for contacts\n";
+	cout << "3) Exit\n";	
 }
 
-bool Contact::setLastName(string name) {
-	if (name == "") {
-		return false;
-	}
-	last_name = name;
-	return true;
+void	printIntro()
+{
+	cout << "**************************************\n";
+	cout << "*                                    *\n";
+	cout << "*             PHONEBOOK              *\n";
+	cout << "*                                    *\n";
+	cout << "**************************************\n";
+	cout << "Choose an option:\n\n";
+	cout << "1) Add a contact\n";
+	cout << "2) Search for contacts\n";
+	cout << "3) Exit\n";
 }
 
-bool Contact::setNickname(string name) {
-	if (name == "") {
-		return false;
-	}
-	last_name = name;
-	return true;
-}
+int main(void)
+{
+	int option = 0;
 
-bool Contact::setPhoneNumber(string name) {
-	if (name == "") {
-		return false;
+	printIntro();
+	while (option != 3)
+	{
+		cin >> option;
+		if (option == 1)
+			cout << "\nAdd a contact\n";
+		else if (option == 2)
+			cout << "\nSearch for a contact selected\n";
+		else if (option > 3 || option < 1)
+		{
+			cout << "\nInvalid option. Please select again.\n";
+			printOptions();
+		}
 	}
-	last_name = name;
-	return true;
-}
-
-bool Contact::setDarkestSecret(string name) {
-	if (name == "") {
-		return false;
-	}
-	last_name = name;
-	return true;
-}
-
-int main(){
-	Contact contact1;	// Create an object of class Contact
-	return 0;
+	cout << "\nExiting program;\n";
+	return (0);		
 }
