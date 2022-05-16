@@ -11,4 +11,5 @@ void	Contact::addcontact() {
 	cin >> phone_number;
 	cout << "Darkest Secret: \n";
 	cin >> darkest_secret;
+
 }
