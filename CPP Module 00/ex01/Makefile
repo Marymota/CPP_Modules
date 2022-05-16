@@ -1,4 +1,4 @@
-NAME		:=		phoneBook
+NAME		:=		phonebook
 
 PATH_SRC	:=		src
 PATH_BUILD	:=		build

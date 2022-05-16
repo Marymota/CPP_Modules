@@ -1,13 +1,26 @@
 #include "../inc/PhoneBook.hpp"
-// The user Input needs to be converted to strings insted of 1, 2, 3;
+
+void search(PhoneBook phonebook)
+{
+	int i = -1;
+	Contact new_contact;
+	cout << "\nSearch for a contact selected\n";
+	cout << phonebook.index << endl
+	;
+	while (++i < phonebook.index)
+	{
+		new_contact = phonebook.contact_list[i];
+		new_contact.getcontactinfo(i);
+	}
+}
 
 void	printOptions()
 {
 	cout << "\n--------------------------------------";
 	cout << "\nChoose an option:\n\n";
-	cout << "1) Add a contact\n";
-	cout << "2) Search for contacts\n";
-	cout << "3) Exit\n";	
+	cout << "ADD\n";
+	cout << "SEARCH\n";
+	cout << "EXIT\n";
 }
 
 void	printIntro()
@@ -25,7 +38,6 @@ void	printIntro()
 
 int main(void)
 {
-	int index = 0;
 	string option;
 	PhoneBook phonebook;
 	Contact newContact;
@@ -34,21 +46,27 @@ int main(void)
 	while (1)
 	{
 		cin >> option;
-		if (option.compare("ADD") == 0)
+		if (option.compare("ADD") == 0 || option.compare("add") == 0)
 		{
-			if (index == 8)
-				--index;
+			if (phonebook.index == 8)
+				--phonebook.index;
 			cout << "\nAdd a contact\n";
 			newContact.addcontact();
-			phonebook.contact_list[index++] = newContact;
+			phonebook.contact_list[phonebook.index++] = newContact;
+			system("clear");
 			cout << "\nNew contact added!\n";
 		}
-		else if (option.compare("SEARCH") == 0)
-			cout << "\nSearch for a contact selected\n";
-		else if (option.compare("EXIT") == 0)
+		else if (option.compare("SEARCH") == 0 || option.compare("search") == 0)
+		{
+			system("clear");
+			search(phonebook);
+			// to implement: need to search for a contact and print all info
+		}
+		else if (option.compare("EXIT") == 0 || option.compare("exit") == 0)
 			break;
 		else
 		{
+			system("clear");
 			cout << "\nInvalid option. Please select again.\n";
 			printOptions();
 		}

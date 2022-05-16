@@ -13,6 +13,7 @@ class Contact{
 	string darkest_secret;
 public:
 	void addcontact();
+	void getcontactinfo(int index);
 };
 
 #endif
