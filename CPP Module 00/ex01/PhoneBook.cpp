@@ -1,17 +1,27 @@
-#include "../inc/PhoneBook.hpp"
-// The user Input needs to be converted to strings insted of 1, 2, 3;
+#include "./inc/PhoneBook.hpp"
 
-void	search(Phonebook phonebook) {
-	int index = phonebook.index;
+void	search(PhoneBook phonebook) {
+	int index = phonebook.index + 1;
+
+	cout << "Please insert the contact place in the phonebook from 1 to 8\n";
+	cin >> index;
+	while (index < 1 || index > 8)
+	{
+		cout << "Please indert a valid numbert from 1 to 8\n";
+		cin >> index;
+	}
+	if (index > phonebook.index + 1)
+		cout << "\nThe " << index << " contact place was not filled yet";
+	phonebook.contact_list[index - 1].getcontact();
 }
 
 void	printOptions()
 {
 	cout << "\n--------------------------------------";
 	cout << "\nChoose an option:\n\n";
-	cout << "1) Add a contact\n";
-	cout << "2) Search for contacts\n";
-	cout << "3) Exit\n";	
+	cout << "ADD\n";
+	cout << "SEARCH\n";
+	cout << "EXIT\n";
 }
 
 void	printIntro()
@@ -49,8 +59,13 @@ int main(void)
 		}
 		else if (option.compare("SEARCH") == 0 || option.compare("search") == 0)
 		{
-			cout << "\nSearch for a contact selected\n";
-			search(phonebook);
+			if (index != 0)
+			{
+				cout << "\nSearch for a contact selected\n";
+				search(phonebook);
+			}
+			else
+				cout << "\nThere are no contacts!\n";
 		}
 		else if (option.compare("EXIT") == 0 || option.compare("exit") == 0)
 			break;

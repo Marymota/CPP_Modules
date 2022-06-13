@@ -1,6 +1,6 @@
 NAME		:=		megaphone
 
-PATH_SRC	:=		src
+PATH_SRC	:=		
 PATH_BUILD	:=		build
 
 SRCS		:=		$(shell find $(PATH_SRC) -name *.cpp)

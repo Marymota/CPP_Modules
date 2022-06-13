@@ -1,4 +1,4 @@
-#include "../inc/PhoneBook.hpp"
+#include "./inc/PhoneBook.hpp"
 
 void	Contact::addcontact() {
 	cout << "First name: \n";
@@ -11,5 +11,12 @@ void	Contact::addcontact() {
 	cin >> phone_number;
 	cout << "Darkest Secret: \n";
 	cin >> darkest_secret;
+}
 
+void	Contact::getcontact() {
+	cout << first_name << endl;
+	cout << last_name << endl;
+	cout << nickname << endl;
+	cout << phone_number << endl;
+	cout << darkest_secret << endl;
 }

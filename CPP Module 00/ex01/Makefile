@@ -1,10 +1,10 @@
 NAME		:=		phoneBook
 
-PATH_SRC	:=		src
+PATH_SRC	:=		
 PATH_BUILD	:=		build
 PATH_INC	:=		inc
 
-SRCS		:=		$(shell find $(PATH_SRC) -name *.cpp)
+SRCS		:=		$(shell find *.cpp)
 OBJS		:=		$(SRCS:%.cpp=$(PATH_BUILD)/%.o)
 DEPS		:=		$(OBJS:.o=.d)
 INC_DIRS	:=		$(shell find $(PATH_INC) -name *.cpp -type d)
