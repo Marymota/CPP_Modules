@@ -1,7 +1,16 @@
 #include "./inc/PhoneBook.hpp"
 
 void	search(PhoneBook phonebook) {
-	int index = phonebook.index + 1;
+	int i = 0;
+	int index = phonebook.index;
+
+	while (i < phonebook.index)
+	{
+		cout << phonebook.contact_list[i].getcontact("first") << " | "
+		<< phonebook.contact_list[i].getcontact("last") << " | " 
+		<< phonebook.contact_list[i].getcontact("nick") << endl;
+		++i;
+	}
 
 	cout << "Please insert the contact place in the phonebook from 1 to 8\n";
 	cin >> index;
@@ -10,9 +19,12 @@ void	search(PhoneBook phonebook) {
 		cout << "Please indert a valid numbert from 1 to 8\n";
 		cin >> index;
 	}
-	if (index > phonebook.index + 1)
-		cout << "\nThe " << index << " contact place was not filled yet";
-	phonebook.contact_list[index - 1].getcontact();
+	if (index > phonebook.index)
+		cout << "\nThe " << index << " contact place was not filled yet" << endl;
+	else
+		phonebook.contact_list[index - 1].getall();
+	sleep(1);
+	system("clear");
 }
 
 void	printOptions()
@@ -39,31 +51,30 @@ void	printIntro()
 
 int main(void)
 {
-	int index = 0;
 	string option;
 	PhoneBook phonebook;
 	Contact newContact;
 
 	printIntro();
+	phonebook.index = 0;
 	while (1)
 	{
 		cin >> option;
 		if (option.compare("ADD") == 0 || option.compare("add") == 0)
 		{
-			if (index == 8)
-				--index;
+			if (phonebook.index == 8)
+				--phonebook.index;
 			cout << "\nAdd a contact\n";
 			newContact.addcontact();
-			phonebook.contact_list[index++] = newContact;
+			phonebook.contact_list[phonebook.index] = newContact;
+			if (phonebook.index != 8)
+				phonebook.index++;
 			cout << "\nNew contact added!\n";
 		}
 		else if (option.compare("SEARCH") == 0 || option.compare("search") == 0)
 		{
-			if (index != 0)
-			{
-				cout << "\nSearch for a contact selected\n";
+			if (phonebook.index != 0)
 				search(phonebook);
-			}
 			else
 				cout << "\nThere are no contacts!\n";
 		}
@@ -74,7 +85,7 @@ int main(void)
 			cout << "\nInvalid option. Please select again.\n";
 			system("clear");
 			printOptions();
-		} 
+		}
 		sleep(1);
 		system("clear");
 		printOptions();

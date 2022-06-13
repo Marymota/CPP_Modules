@@ -12,8 +12,9 @@ class Contact{
 	string phone_number;
 	string darkest_secret;
 public:
-	void addcontact();
-	void getcontact();
+	void	addcontact();
+	void	getall();
+	string	getcontact(string value);
 };
 
 #endif
