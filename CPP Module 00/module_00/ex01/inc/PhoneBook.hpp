@@ -1,13 +1,13 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-#include <stdlib.h>
-#include <iostream> 								
-#include <string.h>
-#include "Contact.hpp"
 #include <unistd.h>
+#include <cstdlib>
+#include <iostream> 	
+#include <iomanip>							
+#include <string>
 
-using namespace std;
+#include "Contact.hpp"
 
 class PhoneBook{
 public:

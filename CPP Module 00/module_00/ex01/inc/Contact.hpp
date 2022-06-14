@@ -1,20 +1,16 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 
-#include <string>
-
-using namespace std;
-
 class Contact{
-	string first_name;					
-	string last_name;
-	string nickname;
-	string phone_number;
-	string darkest_secret;
+	std::string first_name;					
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
 public:
-	void	addcontact();
-	void	getall();
-	string	getcontact(string value);
+	void		addcontact();
+	void		getall();
+	std::string	getcontact(std::string value);
 };
 
 #endif

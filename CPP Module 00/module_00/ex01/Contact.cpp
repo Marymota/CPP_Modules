@@ -2,34 +2,46 @@
 
 void	Contact::addcontact() 
 {
-	cout << "First name: \n";
-	cin >> first_name;
-	cout << "Last name: \n";
-	cin >> last_name;
-	cout << "Nickname: \n";
-	cin >> nickname;
-	cout << "Phone number: \n";
-	cin >> phone_number;
-	cout << "Darkest Secret: \n";
-	cin >> darkest_secret;
+	std::cout	<< "First name: \n";
+	std::cin 	>> first_name;
+	std::cout	<< "Last name: \n";
+	std::cin 	>> last_name;
+	std::cout	<< "Nickname: \n";
+	std::cin 	>> nickname;
+	std::cout	<< "Phone number: \n";
+	std::cin 	>> phone_number;
+	std::cout	<< "Darkest Secret: \n";
+	std::cin 	>> darkest_secret;
 }
 
 void	Contact::getall() 
 {
-	cout << first_name << endl;
-	cout << last_name << endl;
-	cout << nickname << endl;
-	cout << phone_number << endl;
-	cout << darkest_secret << endl;
+	std::cout << first_name 	<<	std::endl;
+	std::cout << last_name 		<<	std::endl;
+	std::cout << nickname 		<<	std::endl;
+	std::cout << phone_number 	<<	std::endl;
+	std::cout << darkest_secret <<	std::endl;
 }
 
-string	Contact::getcontact(string value)
+std::string	Contact::getcontact(std::string value)
 {
 	if (value.compare("first") == 0)
-		return (first_name);
+	{
+		if (first_name.length() > 10)
+			return (first_name.substr(0, 9) + ".");
+		else
+			return (first_name.substr(0, 10));
+	}
 	else if (value.compare("last") == 0)
-		return (last_name);
-	else if (value.compare("nick") == 0)
-		return (nickname);
+	{
+		if (last_name.length() > 10)
+			return (last_name.substr(0, 9) + ".");
+		else
+			return (last_name.substr(0, 10));
+	}
+	else if (nickname.length() > 10)
+			return (nickname.substr(0, 9) + ".");
+		else
+			return (nickname.substr(0, 10));
 	return (0);
 }
