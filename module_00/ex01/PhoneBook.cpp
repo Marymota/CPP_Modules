@@ -1,19 +1,5 @@
 #include "./inc/PhoneBook.hpp"
 
-void	ADD(PhoneBook phonebook)
-{
-	Contact newContact;
-
-	if (phonebook.index == 8)
-		--phonebook.index;
-	std::cout << "\nAdd a contact\n";
-	newContact.addcontact();
-	phonebook.contact_list[phonebook.index] = newContact;
-	if (phonebook.index != 8)
-		phonebook.index++;
-	std::cout << "\nNew contact added!\n";
-}
-
 void	print_contacts(PhoneBook phonebook)
 {
 	int i = -1;
@@ -28,7 +14,7 @@ void	print_contacts(PhoneBook phonebook)
 	}	
 }
 
-void	SEARCH(PhoneBook phonebook)
+void	search(PhoneBook phonebook)
 {
 	int index = phonebook.index;
 
@@ -67,6 +53,7 @@ int main(void)
 {
 	std::string option;
 	PhoneBook phonebook;
+	Contact newContact;
 
 	printIntro();
 	phonebook.index = 0;
@@ -75,11 +62,20 @@ int main(void)
 		printOptions();
 		std::cin >> option;
 		if (option.compare("ADD") == 0 || option.compare("add") == 0)
-			ADD(phonebook);
+		{
+			if (phonebook.index == 8)
+				--phonebook.index;
+			std::cout << "\nAdd a contact\n";
+			newContact.addcontact();
+			phonebook.contact_list[phonebook.index] = newContact;
+			if (phonebook.index != 8)
+				phonebook.index++;
+			std::cout << "\nNew contact added!\n";
+		}
 		else if (option.compare("SEARCH") == 0 || option.compare("search") == 0)
 		{
 			if (phonebook.index != 0)
-				SEARCH(phonebook);
+				search(phonebook);
 			else
 				std::cout << "\nThere are no contacts!\n";
 		}
