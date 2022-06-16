@@ -4,13 +4,14 @@ void	print_contacts(PhoneBook phonebook)
 {
 	int i = -1;
 
-	std::cout << "     index|" << " firstname|" << "  lastname" << std::endl;
+	std::cout << "|     index|" << " firstname|" << "  lastname|" << "  nickname|" << std::endl;
 	while (++i < phonebook.index)
 	{
-		std::cout << std::right << std::setw(10) << phonebook.contact_list[i].getcontact("first") 
-		<< "|" << std::right << std::setw(10) << phonebook.contact_list[i].getcontact("last") 
-		<< "|" << std::right << std::setw(10) << phonebook.contact_list[i].getcontact("nick") 
-		<< std::endl;
+		std::cout << "|" << std::right << std::setw(10) << i + 1 << std::right
+		<< "|" << std::setw(10) << std::right << phonebook.contact_list[i].getcontact("first")
+		<< "|" << std::setw(10) << std::right << phonebook.contact_list[i].getcontact("last") 
+		<< "|" << std::setw(10) << std::right << phonebook.contact_list[i].getcontact("nick") 
+		<< "|" << std::endl;
 	}	
 }
 

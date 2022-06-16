@@ -9,14 +9,13 @@ int	valid_phone(std::string phone_number)
 	size = phone_number.length();
 	while (++i < size)
 	{
-		if (phone_number[i] - 48 <= 0 || phone_number[i] - 48 >= 9)
+		if (phone_number[i] - 48 < 0 || phone_number[i] - 48 > 9)
 		{
 			i = -1;
 			std::cout << "Invalid number. Try again" << std::endl;
 			return (0);
 		}
 	}
-	std::cout << phone_number[i] << std::endl;
 	return (1);
 }
 
@@ -50,21 +49,21 @@ std::string	Contact::getcontact(std::string value)
 {
 	if (value.compare("first") == 0)
 	{
-		if (first_name.length() > 10)
+		if (first_name.size() > 10)
 			return (first_name.substr(0, 9) + ".");
 		else
-			return (first_name.substr(0, 10));
+			return (first_name);
 	}
 	else if (value.compare("last") == 0)
 	{
-		if (last_name.length() > 10)
+		if (last_name.size() > 10)
 			return (last_name.substr(0, 9) + ".");
 		else
-			return (last_name.substr(0, 10));
+			return (last_name);
 	}
-	else if (nickname.length() > 10)
+	else if (nickname.size() > 10)
 			return (nickname.substr(0, 9) + ".");
 		else
-			return (nickname.substr(0, 10));
+			return (nickname);
 	return (0);
 }
