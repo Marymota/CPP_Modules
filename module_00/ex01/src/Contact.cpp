@@ -1,4 +1,4 @@
-#include "./inc/PhoneBook.hpp"
+#include "../inc/PhoneBook.hpp"
 
 int	valid_phone(std::string phone_number)
 {
@@ -44,7 +44,7 @@ void	Contact::getall()
 	std::cout << phone_number 	<<	std::endl;
 	std::cout << darkest_secret <<	std::endl;
 }
-
+// Some characters are counted double of the size 'ç' what can cause errors
 std::string	Contact::getcontact(std::string value)
 {
 	if (value.compare("first") == 0)
