@@ -1,5 +1,15 @@
 #include "../inc/PhoneBook.hpp"
 
+void	PhoneBook::set_contact(Contact contact, int index)
+{
+	contact_list[index] = contact;
+}
+
+Contact PhoneBook::get_contact(int index)
+{
+	return (contact_list[index]);
+}
+
 int isvalid(int i)
 {
 	if (i == 1 || i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 7 || i == 8)
@@ -27,9 +37,9 @@ void	print_contacts(PhoneBook phonebook)
 	while (++i < phonebook.get_index())
 	{
 		std::cout << "|" << std::setw(10) << std::right << i + 1
-		<< "|" << std::setw(10) << std::right << phonebook.contact_list[i].getcontact("first")
-		<< "|" << std::setw(10) << std::right << phonebook.contact_list[i].getcontact("last") 
-		<< "|" << std::setw(10) << std::right << phonebook.contact_list[i].getcontact("nick") 
+		<< "|" << std::setw(10) << std::right << phonebook.get_contact(i).getcontact("first")
+		<< "|" << std::setw(10) << std::right << phonebook.get_contact(i).getcontact("last") 
+		<< "|" << std::setw(10) << std::right << phonebook.get_contact(i).getcontact("nick") 
 		<< "|" << std::endl;
 	}	
 }
@@ -50,7 +60,7 @@ int	search(PhoneBook phonebook)
 	else if (index > phonebook.get_index())
 		std::cout << "\nThe " << index << " contact place was not filled yet" << std::endl;
 	else
-		phonebook.contact_list[index - 1].getall();
+		phonebook.get_contact(index - 1).getall();
 	return (0);
 }
 
@@ -90,7 +100,7 @@ int main(void)
 				phonebook.set_index(--index);
 			std::cout << "\nAdd a contact\n";
 			newContact.addcontact();
-			phonebook.contact_list[index] = newContact;
+			phonebook.set_contact(newContact, index);
 			if (index != 8)
 				phonebook.set_index(++index);
 			std::cout << "\nNew contact added!\n";

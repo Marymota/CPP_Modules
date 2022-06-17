@@ -61,9 +61,12 @@ std::string	Contact::getcontact(std::string value)
 		else
 			return (last_name);
 	}
-	else if (nickname.size() > 10)
+	else if (value.compare("nick") == 0)
+	{
+		if (nickname.size() > 10)
 			return (nickname.substr(0, 9) + ".");
 		else
 			return (nickname);
+	}
 	return (0);
 }

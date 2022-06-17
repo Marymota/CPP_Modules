@@ -10,12 +10,14 @@
 #include "Contact.hpp"
 
 class PhoneBook{
-private:
-	int index;
 public:
-	Contact contact_list[8];
 	int	get_index();
 	int set_index(int i);
+	Contact get_contact(int index);
+	void set_contact(Contact contact, int index);
+private:
+	int index;
+	Contact contact_list[8];
 };
 
 #endif
