@@ -1,27 +1,7 @@
 #include "../inc/PhoneBook.hpp"
 
-int	valid_phone(std::string phone_number)
-{
-	int i;
-	int size;
-
-	i = -1;
-	size = phone_number.length();
-	while (++i < size)
-	{
-		if (phone_number[i] - 48 < 0 || phone_number[i] - 48 > 9)
-		{
-			i = -1;
-			std::cout << "Invalid number. Try again" << std::endl;
-			return (0);
-		}
-	}
-	return (1);
-}
-
 void	Contact::addcontact() 
 {
-
 	std::cout	<< "First name: \n";
 	std::cin 	>> first_name;
 	std::cout	<< "Last name: \n";

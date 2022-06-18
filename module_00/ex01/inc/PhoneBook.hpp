@@ -20,4 +20,11 @@ private:
 	Contact contact_list[8];
 };
 
+int		valid_phone(std::string phone_number);
+void	print_contacts(PhoneBook phonebook);
+int		search(PhoneBook phonebook);
+void	printOptions();
+void	printIntro();
+
+
 #endif
