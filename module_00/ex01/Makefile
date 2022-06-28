@@ -1,15 +1,16 @@
 NAME		:=		phonebook
 
-PATH_SRC	:=		./src
-PATH_BUILD	:=		build
+PATH_SRC	:=		src
 PATH_INC	:=		inc
+PATH_BUILD	:=		build
+
 
 SRCS		:=		$(shell find $(PATH_SRC) -name *.cpp)
 OBJS		:=		$(SRCS:%.cpp=$(PATH_BUILD)/%.o)
 DEPS		:=		$(OBJS:.o=.d)
-INC_DIRS	:=		$(shell find $(PATH_INC) -name *.cpp -type d)
+INC_DIRS	:=		$(shell find $(PATH_INC) -type d)
 
-CC			:=		c++
+CC			:=		clang++
 
 FLAG_WARN	:=		-Wall -Wextra -Werror
 FLAG_STD	:=		-std=c++98

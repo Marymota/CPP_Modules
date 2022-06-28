@@ -14,7 +14,7 @@ CC			:=		clang++
 FLAG_WARN	:=		-Wall -Wextra -Werror
 FLAG_STD	:=		-std=c++98
 FLAG_MAKE	:=		-MMD -MP
-FLAG_DEBUG	:= 		-g
+FLAG_DEBUG	:= 	-g
 FLAG_OPT	:=		-03
 FLAG_COMP	:=		$(FLAG_WARN) $(FLAG_STD) $(FLAG_MAKE) $(FLAG_DEBUG) $(FLAG_MLEAK)
 
