@@ -1,5 +1,5 @@
+/* Allocate a number of objects at the same time using new[] */
 #include "../inc/Zombie.hpp"
-
 
 int main ()
 {

@@ -1,3 +1,5 @@
+/* Convert a sring to uppercase using c++ syntax */
+
 #include <iostream>
 #include <cctype>
 #include <cstring>

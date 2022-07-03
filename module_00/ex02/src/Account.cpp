@@ -1,10 +1,12 @@
+/* Recreation of class arguments and methods based on class declaration and program output*/
+
 #include "../inc/Account.hpp"
 #include <ctime>
 #include <iostream>
 #include <iomanip>
 
 // Private Account Static variables 
-int Account::_nbAccounts = 0;			// Total number of accounts
+int Account::_nbAccounts = 0;					// Total number of accounts
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
@@ -14,9 +16,9 @@ Account::Account(void)
 {
 	_displayTimestamp();
 	_accountIndex = _nbAccounts++;		// Account index is equal to total number of accounts incremented by 1
-	_amount = 0;						// The account is created with any deposit
-	_nbDeposits = 0;					// Number of deposits made
-	_nbWithdrawals = 0;					// Number of withrawals done
+	_amount = 0;											// The account is created with any deposit
+	_nbDeposits = 0;									// Number of deposits made
+	_nbWithdrawals = 0;								// Number of withrawals done
 }
 
 // Constructor with parameter
@@ -26,14 +28,14 @@ Account::Account(int initial_deposit)
 	std::cout << "index:" << _nbAccounts << ";" << "amount:" << initial_deposit << ";created" << std::endl;
 
 	_accountIndex = _nbAccounts++;		// Account index is equal to total number of accounts incremented by 1
-	_amount += initial_deposit;			// The account is created with a initial deposit
-	_nbDeposits = 0;					// Number of deposits made
-	_nbWithdrawals = 0;					// Number of withrawals done
+	_amount += initial_deposit;				// The account is created with a initial deposit
+	_nbDeposits = 0;									// Number of deposits made
+	_nbWithdrawals = 0;								// Number of withrawals done
 	_totalAmount += _amount;			
 }
 
 //	Destructor
-Account::~Account(void)					// closes accounts
+Account::~Account(void)							// closes accounts
 {
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";closed" << std::endl;

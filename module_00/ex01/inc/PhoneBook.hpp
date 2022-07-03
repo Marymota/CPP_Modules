@@ -11,12 +11,12 @@
 
 class PhoneBook{
 public:
-	int	get_index();
-	int set_index(int i);
+	int			get_index();
+	int			set_index(int i);
 	Contact get_contact(int index);
-	void set_contact(Contact contact, int index);
+	void		set_contact(Contact contact, int index);
 private:
-	int index;
+	int			index;
 	Contact contact_list[8];
 };
 

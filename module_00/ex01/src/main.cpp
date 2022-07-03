@@ -1,3 +1,8 @@
+/*	Classe implementation;
+	 	Public and private arguments;
+		Set and get arguments; 
+*/
+
 #include "../inc/PhoneBook.hpp"
 
 int	valid_phone(std::string phone_number)
