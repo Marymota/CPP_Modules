@@ -58,11 +58,11 @@ print the equivalent function using the member-to-function-pointers:
 
 ```(this->*msgs[i])(); ```
 
-	'this->*' accesses the member function pointed by msgs[i];
-	->* combines its first operand, a pointer to an object of class type,
-	with its second operand, a pointer-to-member-type.
-	Parentheses required since * binds less tightly than the function call.
+'this->*' accesses the member function pointed by msgs[i];
+->* combines its first operand, a pointer to an object of class type,
+with its second operand, a pointer-to-member-type.
+Parentheses required since * binds less tightly than the function call.
 
-	resources:
-		isocpp.org/wiki/faq/pointers-to-members
-		docs.microsoft.com/en-us/cpp/ccpp/pointer-to-member-operators-dot-star-and-star?view=msvc-170 
+resources:
+isocpp.org/wiki/faq/pointers-to-members
+docs.microsoft.com/en-us/cpp/ccpp/pointer-to-member-operators-dot-star-and-star?view=msvc-170 
