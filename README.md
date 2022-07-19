@@ -41,22 +41,22 @@ For HumanB, since the attribute Weapon is not compulsory, and because a referenc
 Define a data type that is a pointer of that type that points to any number of 'Object'
 that takes '(void)' i.e.: Object::debug, Object::info, Object::warning & Object::error:
 	
-	``` typedef void (Object::*PTR)();"```
+```typedef void (Object::*PTR)();"```
 	 
 
 Create an array of strings with the possible levels:
 
-	```	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};```
+```std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};```
 
 
 Create an array of member-to-function-pointers that matches the levels array positions:
 
-	``` PTR msgs[4] = {&Object::debug, &Object::info, &Object::warning, &Object::error};```
+```PTR msgs[4] = {&Object::debug, &Object::info, &Object::warning, &Object::error};```
 
 When the string passed in the main function matches one of the strings in the levels array
 print the equivalent function using the member-to-function-pointers:
 
-	``` (this->*msgs[i])(); ```
+```(this->*msgs[i])(); ```
 
 	'this->*' accesses the member function pointed by msgs[i];
 	->* combines its first operand, a pointer to an object of class type,
