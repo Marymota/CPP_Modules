@@ -63,6 +63,6 @@ print the equivalent function using the member-to-function-pointers:
 with its second operand, a pointer-to-member-type.
 Parentheses required since * binds less tightly than the function call.
 
-resources:
-isocpp.org/wiki/faq/pointers-to-members
+resources:    
+isocpp.org/wiki/faq/pointers-to-members    
 docs.microsoft.com/en-us/cpp/ccpp/pointer-to-member-operators-dot-star-and-star?view=msvc-170 
