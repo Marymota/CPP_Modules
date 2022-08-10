@@ -37,8 +37,13 @@ class Fixed {														// Class definition
 /**********************************************************/
 /*									OPERATOR OVERLOADING									*/
 /**********************************************************/
-/*							INCREMENT / DECREMENT OPERATORS						*/
+/*									ARITHMETIC OPERATORS									*/
+		Fixed	operator+(const Fixed&);
+		Fixed	operator-(const Fixed&);
+		Fixed	operator*(const Fixed&);
+		Fixed	operator/(const Fixed&);	
 
+/*							INCREADE /DECREASE OPERATORS							*/
 		Fixed&	operator++();								// Prefix increment operator
 		Fixed		operator++(int);						// Postfix increment operator
 		Fixed&	operator--();								// Prefix increment operator
@@ -59,25 +64,8 @@ class Fixed {														// Class definition
 /*										OVERLOAD OPERATORS									*/
 /**********************************************************/
 
-std::ostream& operator << (std::ostream& out, const Fixed& obj);
-
-
-/*									COMPARISON OPERATORS									*/
-																
-std::ostream& operator <	(std::ostream& out, const Fixed& obj);
-std::ostream& operator >	(std::ostream& out, const Fixed& obj);
-std::ostream& operator >=	(std::ostream& out, const Fixed& obj);
-std::ostream& operator <= (std::ostream& out, const Fixed& obj);
-std::ostream& operator ==	(std::ostream& out, const Fixed& obj);
-std::ostream& operator != (std::ostream& out, const Fixed& obj);
-
-
-/*									ARITHMETIC OPERATORS									*/
-
-std::ostream& operator +	(std::ostream& out, const Fixed& obj);
-std::ostream& operator -	(std::ostream& out, const Fixed& obj);
-std::ostream& operator *	(std::ostream& out, const Fixed& obj);
-std::ostream& operator /	(std::ostream& out, const Fixed& obj);
+std::ostream& operator << (std::ostream& out, const Fixed& obj); 
+																				// overload operator <<
 
 
 #endif

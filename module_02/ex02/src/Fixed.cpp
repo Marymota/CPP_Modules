@@ -70,6 +70,13 @@ float Fixed::toFloat( void ) const {
 /**********************************************************/
 /*									OPERATOR OVERLOADING									*/
 /**********************************************************/
+/*									ARITHMETRIC OPERATORS									*/
+
+Fixed Fixed::operator+(const Fixed& obj) { fx += obj.toFloat() ; return *this; }
+Fixed Fixed::operator-(const Fixed& obj) { fx -= obj.toFloat() ; return *this; }
+Fixed Fixed::operator*(const Fixed& obj) { fx *= obj.toFloat() ; return *this; }
+Fixed Fixed::operator/(const Fixed& obj) { fx /= obj.toFloat() ; return *this; }
+
 /*							INCREMENT / DECREMENT OPERATORS						*/
 
 Fixed& Fixed::operator++() {		// Prefix increment operator
@@ -111,9 +118,12 @@ std::ostream& operator << (std::ostream& out, const Fixed& obj) {
 		into the output stream object passed as a parameter */
 
 
-/* 	Resources: 
-		https://inst.eecs.berkeley.edu/~cs61c/sp06/handout/fixedpt.html
-		https://www.3dgep.com/cpp-fast-track-14-fixed-point/
-		https://stackoverflow.com/questions/28483652/float-to-fixed-conversion
-		https://stackoverflow.com/questions/39925020/rounding-up-and-down-a-number-c	
+/****************************/
+/*				RESOURCES					*/
+/****************************/
+/* 	
+		C++ Cookbook: Solutions and Examples for C++ Programmers (Cookbooks (O'Reilly)) 1st Edition
+		by D. Ryan Stephens, Christopher Diggins, Jonathan Turkanis & Jeff Cogswell
+		Chapters:
+			8.13 Overloading the Increment and Decrement Operators (318)
 */
