@@ -5,22 +5,18 @@
 /**********************************************************/
 
 Fixed::Fixed( void ) : fx(0) {
-	//std::cout << "Default constructor called" << std::endl;
 };
 
 Fixed::Fixed( const Fixed& obj) {
-	//std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
 Fixed& Fixed::operator = (const Fixed& obj) {
-	//std::cout << "Copy assignment operator called" << std::endl;
 	fx = obj.getRawBits();
 	return *this;
 }
 
 Fixed::~Fixed() {
-	//std::cout << "Destructor called" << std::endl;
 };
 
 /**********************************************************/
@@ -28,7 +24,6 @@ Fixed::~Fixed() {
 /**********************************************************/
 
 Fixed::Fixed(const int i) {
-	//std::cout << "Int constructor called" << std::endl;
 	fx = i << _bits;	
 	/*	Convert int to fixed-point number	
 				fx = 10		-> 1010 
@@ -37,7 +32,6 @@ Fixed::Fixed(const int i) {
 };
 
 Fixed::Fixed(const float f) {
-	//std::cout << "Float constructor called" << std::endl;
 	fx = std::ceil(f * (1 << _bits));
 	/* Convert float to fixed-point number 
 				fx = 42.42		-> 101010.0110101110000101001
