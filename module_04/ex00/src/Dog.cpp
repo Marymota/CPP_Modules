@@ -8,16 +8,20 @@ Dog::Dog() {
 };
 
 Dog::Dog(const Dog& obj) {
+	std::cout << "Dog Copy Constructor" << std::endl;
 	*this = obj;
 };
 
 Dog& Dog::operator=(const Dog& obj) {
+	std::cout << "Dog Copy assignment Operator" << std::endl;
 	type = obj.type;
 	return *this;
 };
 
-Dog::~Dog() {};
+Dog::~Dog() {
+	std::cout << "Dog Destructor" << std::endl;
+};
 
-void Dog::makeSound() const{
+void Dog::makeSound() const {
 	std::cout << "Bark Bark!" << std::endl;
 }
