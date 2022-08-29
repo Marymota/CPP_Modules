@@ -4,20 +4,22 @@
 #include <iostream>
 #include <string>
 
+#include "../inc/Brain.hpp"
+
 class Animal {
 
 	public:
 		Animal();
 		Animal(const Animal&);
 		Animal& operator=(const Animal&);
-		virtual ~Animal();
-
+		virtual ~Animal() = 0;
+		
 		void virtual makeSound() const;
 		std::string getType() const;
+		
 
 	protected:
-		std::string type; //Animal class is present and has one attribute: One string called 'type'
-		
+		std::string type;
 };
 
 #endif

@@ -16,13 +16,21 @@ int main () {
 	j->makeSound();
 	i->makeSound();
 	meta->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
 	
+	std::cout << std::endl;
 	const WrongAnimal* wmeta = new WrongAnimal();
 	const WrongAnimal* wi = new WrongCat();
 
 	std::cout << wi->getType() << " " << std::endl;
 	wi->makeSound();
 	wmeta->makeSound();
+
+	delete wi;
+	delete wmeta;
 
 	return (0);
 }
