@@ -4,30 +4,53 @@
 #include <iostream>
 #include <cmath>
 
-class Fixed {
+class Fixed {														// Class definition
 
-	private:
-		int fx;
-		static const int _bits = 8;
+//---------------------------------------------------------
+	
+	public:																// Public members	
 
-	public:
-		Fixed();
-		Fixed(const Fixed&);
-		Fixed& operator= ( const Fixed& );
-		~Fixed();
+/**********************************************************/
+/*								ORTHODOX CANONICAL FORM									*/
+/**********************************************************/
+																
+		Fixed();														// Default constructor													
+		Fixed(const Fixed&);								// Copy constructor		
+		Fixed& operator= ( const Fixed& );	// Copy assignment operator overload	
+		~Fixed();														// Destructor
 
-		int		getRawBits ( void ) const;
-		void	setRawBits ( int const raw );
+/**********************************************************/
+/*										OTHER CONSTRUCTORS									*/
+/**********************************************************/
 
-		Fixed(const int);
-		Fixed(const float);
+		Fixed(const int);										// Constructor with integer parameter
+		Fixed(const float);									// Floating point constructor
 
-		int toInt( void ) const;
-		float toFloat( void ) const;
+/**********************************************************/
+/*										MEMBER FUNCTIONS										*/
+/**********************************************************/
+
+		int		getRawBits ( void ) const;		// Return the raw value of the fixed-point number
+		void	setRawBits ( int const raw );	// Sets the raw value of the fixed-point number
+
+		int		toInt( void ) const;					// Converts the fixed-point value to an integer value
+		float	toFloat( void ) const;				// Converts the fixed-point value to a float value
+
+/**********************************************************/
+/*										MEMBER VARIABLES										*/
+/**********************************************************/
+
+	private:															// Private members
+
+		int fx;															// Fixed-point number value
+		static const int _bits = 8;					// Number of fractional bits
 
 };
 
-std::ostream& operator << (std::ostream& out, const Fixed& obj);
+/**********************************************************/
+/*					OVERLOAD OF THE INSERTION OPERATOR (<<)				*/
+/**********************************************************/
 
+std::ostream& operator << (std::ostream& out, const Fixed& obj);
 
 #endif

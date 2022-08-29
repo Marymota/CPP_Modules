@@ -1,8 +1,31 @@
 #include "../inc/Fixed.hpp"
 
+/**********************************************************/
+/*								ORTHODOX CANONICAL FORM									*/
+/**********************************************************/
+
 Fixed::Fixed( void ) : fx(0) {
 	std::cout << "Default constructor called" << std::endl;
 };
+
+Fixed::Fixed( const Fixed& obj) {
+	std::cout << "Copy constructor called" << std::endl;
+	*this = obj;
+}
+
+Fixed& Fixed::operator = (const Fixed& obj) {
+	std::cout << "Copy assignment operator called" << std::endl;
+	fx = obj.getRawBits();
+	return *this;
+}
+
+Fixed::~Fixed() {
+	std::cout << "Destructor called" << std::endl;
+};
+
+/**********************************************************/
+/*										OTHER CONSTRUCTORS									*/
+/**********************************************************/
 
 Fixed::Fixed(const int i) {
 	std::cout << "Int constructor called" << std::endl;
@@ -22,28 +45,17 @@ Fixed::Fixed(const float f) {
 				f << _bits(8) -> f * 256			*/
 };
 
-Fixed::Fixed( const Fixed& obj) {
-	std::cout << "Copy constructor called" << std::endl;
-	*this = obj;
-}
+/**********************************************************/
+/*										MEMBER FUNCTIONS										*/
+/**********************************************************/
 
-Fixed& Fixed::operator= (const Fixed& obj) {
-	std::cout << "Copy assignment operator called" << std::endl;
-	fx = obj.fx;
-	return *this;
-}
-
-Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
-};
-
-int	Fixed::getRawBits ( void ) const {
+int Fixed::getRawBits( void ) const {
 	return fx;
-};
+}
 
-void	Fixed::setRawBits ( int const raw ) {
+void Fixed::setRawBits( int const raw ) {
 	fx = raw;
-};
+}
 
 int Fixed::toInt( void ) const {
 	return fx >> _bits;
@@ -55,9 +67,16 @@ float Fixed::toFloat( void ) const {
 	return ((float)fx) / (1 << _bits);
 }
 
+/**********************************************************/
+/*					OVERLOAD OF THE INSERTION OPERATOR (<<)				*/
+/**********************************************************/
+
 std::ostream& operator << (std::ostream& out, const Fixed& obj) {
 	return out << obj.toFloat();
 }
+/*	Inserts a floating-point representation of the fixed-point number 
+		into the output stream object passed as a parameter */
+
 
 /* 	Resources: 
 		https://inst.eecs.berkeley.edu/~cs61c/sp06/handout/fixedpt.html

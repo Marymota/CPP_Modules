@@ -41,15 +41,5 @@ int main () {
 	return (0);
 }
 
-	/*	Resources:
 
-			"Using-declaration"
-			https://en.cppreference.com/w/cpp/language/using_declaration
 
-			"Solvind the Diamond Problem with Virtual Inheritance"
-			https://www.cprogramming.com/tutorial/virtual_inheritance.html
-
-	
-	 A derived class needs to access methods and attributes of the base class.
-	A base class doesn't need to access elements of the derived class. 
-	Because of this, the derived object is always destroyed first. */

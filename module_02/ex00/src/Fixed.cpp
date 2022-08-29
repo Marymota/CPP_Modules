@@ -15,6 +15,10 @@
 
 #include "../inc/Fixed.hpp"
 
+/**********************************************************/
+/*								ORTHODOX CANONICAL FORM									*/
+/**********************************************************/
+
 // Default Constructor
 Fixed::Fixed() : fixed_pt(0) {
 	std::cout << "Default constructor called" << std::endl;
@@ -37,6 +41,10 @@ Fixed& Fixed::operator = (Fixed& obj) {
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 };
+
+/**********************************************************/
+/*												ACCESSORS						 						*/
+/**********************************************************/
 
 int Fixed::getRawBits( void ) const {
 	std::cout << "getRawBits member function called" << std::endl;

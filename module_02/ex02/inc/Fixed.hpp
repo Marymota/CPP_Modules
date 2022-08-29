@@ -34,9 +34,23 @@ class Fixed {														// Class definition
 		int		toInt( void ) const;					// Converts the fixed-point value to an integer value
 		float	toFloat( void ) const;				// Converts the fixed-point value to a float value
 
+		static Fixed& max(Fixed&, Fixed&);
+		static const Fixed& max(const Fixed&, const Fixed&);
+		static Fixed& min(Fixed&, Fixed&);
+		static const Fixed& min(const Fixed&, const Fixed&);
+
 /**********************************************************/
 /*									OPERATOR OVERLOADING									*/
 /**********************************************************/
+
+/*									COMPARISSON OPERATORS									*/
+		bool	operator> (const Fixed&) const;
+		bool	operator>=(const Fixed&) const;
+		bool	operator< (const Fixed&) const;
+		bool	operator<=(const Fixed&) const;	
+		bool	operator==(const Fixed&) const;
+		bool	operator!=(const Fixed&) const;	
+
 /*									ARITHMETIC OPERATORS									*/
 		Fixed	operator+(const Fixed&);
 		Fixed	operator-(const Fixed&);

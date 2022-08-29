@@ -28,7 +28,7 @@ Fixed::~Fixed() {
 /**********************************************************/
 
 Fixed::Fixed(const int i) {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 	fx = i << _bits;	
 	/*	Convert int to fixed-point number	
 				fx = 10		-> 1010 
@@ -37,7 +37,7 @@ Fixed::Fixed(const int i) {
 };
 
 Fixed::Fixed(const float f) {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 	fx = std::ceil(f * (1 << _bits));
 	/* Convert float to fixed-point number 
 				fx = 42.42		-> 101010.0110101110000101001
@@ -70,7 +70,18 @@ float Fixed::toFloat( void ) const {
 /**********************************************************/
 /*									OPERATOR OVERLOADING									*/
 /**********************************************************/
+/*									COMPARISSON OPERATORS									*/
+
+bool Fixed::operator	>		(const Fixed& obj) const { if( fx >	 obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	>=	(const Fixed& obj) const { if( fx >= obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	<		(const Fixed& obj) const { if( fx <	 obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	<=	(const Fixed& obj) const { if( fx <= obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	==	(const Fixed& obj) const { if( fx == obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	!=	(const Fixed& obj) const { if( fx != obj.fx) { return true; } else { return false; }}
+
 /*									ARITHMETRIC OPERATORS									*/
+// [ !!! ] This may not work in all situations since fx is not a float 
+// but a fixed-point number so I need more testing...
 
 Fixed Fixed::operator+(const Fixed& obj) { fx += obj.toFloat() ; return *this; }
 Fixed Fixed::operator-(const Fixed& obj) { fx -= obj.toFloat() ; return *this; }
@@ -104,6 +115,34 @@ Fixed Fixed::operator--(int) {	// Postfix decrement operator
 	Fixed tmp(*this);
 	--(*this);
 	return tmp;
+}
+
+Fixed& Fixed::max(Fixed& x, Fixed& y)
+{
+	if (x > y)
+		return x;
+	return y;
+}
+
+const Fixed& Fixed::max(const Fixed& x, const Fixed& y)
+{
+	if (x > y)
+		return x;
+	return y;
+}
+
+Fixed& Fixed::min(Fixed& x, Fixed& y)
+{
+	if (x < y)
+		return x;
+	return y;
+}
+
+const Fixed& Fixed::min(const Fixed& x, const Fixed& y)
+{
+	if (x < y)
+		return x;
+	return y;
 }
 
 

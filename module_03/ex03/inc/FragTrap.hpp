@@ -7,14 +7,6 @@
 #include <iostream>
 #include <string>
 
-/* THE DIAMOND PROBLEM 
-When using virtual inheritance, we are guaranteed 
-to get only a single instance of the common base class.
-The DiamondTrap class will have only a single instance
-of the ClapTrap class, shared by both the ScavTrap and 
-FragTrap classes.
-*/
-
 class FragTrap : virtual public ClapTrap {
 
 	public:

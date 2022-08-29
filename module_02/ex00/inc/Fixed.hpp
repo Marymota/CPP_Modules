@@ -7,10 +7,19 @@
 class Fixed 
 {
 	public:
-		Fixed();													// Default Constructor
+
+/**********************************************************/
+/*								ORTHODOX CANONICAL FORM									*/
+/**********************************************************/
+
+		Fixed();													// Default constructor
 		~Fixed();													// Destructor
-		Fixed(Fixed&);										// Copy Constructor	
-		Fixed& operator = (Fixed&);				// Copy assignment Operator
+		Fixed(Fixed&);										// Copy constructor	
+		Fixed& operator = (Fixed&);				// Copy assignment operator
+
+/**********************************************************/
+/*												ACCESSORS						 						*/
+/**********************************************************/
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 	
