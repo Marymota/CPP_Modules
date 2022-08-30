@@ -17,7 +17,6 @@ class Animal {
 
 	protected:
 		std::string type; //Animal class is present and has one attribute: One string called 'type'
-		
 };
 
 #endif

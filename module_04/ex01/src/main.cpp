@@ -18,6 +18,7 @@ int main () {
 	Animal* array[10];
 
 	// alternate creating Cats and Dogs
+
 	for(int n = 0; n < 10; n++) {
 		if ( n %2 == 0) {
 			array[n] = new Dog();
@@ -34,6 +35,21 @@ int main () {
 		std::cout << std::endl;
 		delete array[n];	
 	}
+
+	std::cout << "---------------- Dog Brain -----------------" << std::endl;
+
+	Dog basic;
+	{
+	Dog tmp = basic;
+	}
+
+	std::cout << "---------------- Cat Brain -----------------" << std::endl;
+
+	Cat b;
+	{
+	Cat t = b;
+	}
+
 	return (0);
 }
 
