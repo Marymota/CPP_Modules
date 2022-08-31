@@ -24,3 +24,13 @@ Brain::~Brain() {
 	std::cout << "Brain Destructor" << std::endl;
 };
 
+// Testing deep copy of _Brain
+void Brain::getIdeas() {
+	for (int i = 0; i < 3; i++) {
+		std::cout << "idea: " << ideas[i] << std::endl;
+	}
+}
+
+void Brain::setIdeas(std::string idea, int n) {
+	ideas[n] = idea;
+}

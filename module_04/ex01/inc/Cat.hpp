@@ -10,6 +10,9 @@ class Cat : public Animal{
 		~Cat();
 		
 		void makeSound() const;
+
+		void getIdeas();
+		void setIdeas(std::string idea, int n);
 	
 	// creation of a private brain
 	private:

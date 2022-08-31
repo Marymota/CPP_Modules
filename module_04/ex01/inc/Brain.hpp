@@ -12,6 +12,9 @@ class Brain {
 		Brain& operator=(const Brain&);
 		~Brain();
 
+		void getIdeas();
+		void setIdeas(std::string idea, int n);
+
 		// Create an array of ideas
 		std::string ideas[100];
 };

@@ -3,9 +3,8 @@
 #include "../inc/Cat.hpp"
 #include "../inc/Brain.hpp"
 
-Animal::Animal() {
+Animal::Animal() : _type("") {
 	std::cout << "Animal Constructor" << std::endl;
-	type = "";
 };
 
 Animal::Animal(const Animal& obj) {
@@ -15,7 +14,7 @@ Animal::Animal(const Animal& obj) {
 
 Animal& Animal::operator=(const Animal& obj) {
 	std::cout << "Animal Copy assignment Operator" << std::endl;
-	type = obj.type;
+	_type = obj._type;
 	return (*this);
 };
 
@@ -24,11 +23,10 @@ Animal::~Animal() {
 };
 
 std::string Animal::getType() const {
-	std::cout << "Get Type:" << std::endl;
-	return type;
+	std::cout << "Get Type: ";
+	return _type;
 }
 
 void Animal::makeSound() const{
 	std::cout << "***" << std::endl;
 }
-
