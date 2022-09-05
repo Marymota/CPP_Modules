@@ -13,11 +13,3 @@ ICharacter& ICharacter::operator=(const ICharacter& ) {
 	std::cout << "ICharacter copy assignment operator" << std::endl;
 	return (*this);
 };
-
-ICharacter::~ICharacter() {};
-
-void ICharacter::use(int idx, ICharacter& target) {
-	(void) idx;
-	(void) target;
-	std::cout << "use function " << std::endl;
-}

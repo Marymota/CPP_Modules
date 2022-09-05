@@ -2,23 +2,25 @@
 #define __AMATERIA_HPP__
 
 #include <iostream>
-#include "../inc/ICharacter.hpp"
+#include "ICharacter.hpp"
+class ICharacter;
 
-// Base class
 class AMateria {
+
 	protected:
 		std::string _type;
+		
 	public:
 		AMateria();
 		AMateria(const AMateria&);
 		AMateria& operator=(const AMateria&);
-		~AMateria();
+		virtual ~AMateria();
 
 		AMateria(std::string const&);
 
 		std::string const& getType() const; // Returns the materia type
 
-		virtual AMateria* clone() const = 0;
+		virtual AMateria*	clone() const = 0;
 		virtual void use(ICharacter& target);
 };
 

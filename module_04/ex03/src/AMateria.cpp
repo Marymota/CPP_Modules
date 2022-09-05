@@ -1,6 +1,4 @@
 #include "../inc/AMateria.hpp"
-#include "../inc/Cure.hpp"
-#include "../inc/Ice.hpp"
 
 AMateria::AMateria() {
 	std::cout << "Materia default constructor" << std::endl;
@@ -12,7 +10,7 @@ AMateria::AMateria(std::string const& type) {
 };
 
 AMateria::AMateria(const AMateria& obj) {
-	std::cout << "Materia copy constructor" << std::endl;
+	std::cout << "AMateria copy constructor" << std::endl;
 	*this = obj;
 };
 

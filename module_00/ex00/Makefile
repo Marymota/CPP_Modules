@@ -8,7 +8,7 @@ OBJS				:=		$(SRCS:%.cpp=$(PATH_BUILD)/%.o)
 DEPS				:=		$(OBJS:.o=.d)
 INC_DIRS		:=		$(shell find $(PATH_SRC) -type d)
 
-CC					:=		clang++
+CC					:=		c++
 
 FLAG_WARN		:=		-Wall -Wextra -Werror
 FLAG_STD		:=		-std=c++98

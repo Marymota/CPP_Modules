@@ -13,5 +13,3 @@ IMateriaSource& IMateriaSource::operator=(const IMateriaSource& ) {
 	std::cout << "IMateriaSource copy assignment operator" << std::endl;
 	return (*this);
 };
-
-IMateriaSource::~IMateriaSource() {};

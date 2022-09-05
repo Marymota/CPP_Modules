@@ -2,20 +2,20 @@
 #define __IMATERIASOURCE_HPP__
 
 #include <iostream>
-#include "../inc/ICharacter.hpp"
+#include "AMateria.hpp"
+class AMateria;
 
 // Base class
 class IMateriaSource {
 
 	public:
 		IMateriaSource();
-		IMateriaSource(const IMateriaSource&);
-		IMateriaSource& operator=(const IMateriaSource&);
-
+		IMateriaSource(const IMateriaSource& );
+		IMateriaSource& operator=(IMateriaSource const& );
 		virtual ~IMateriaSource() {}
+		
 		virtual void learnMateria(AMateria*) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
-
 };
 
 #endif
