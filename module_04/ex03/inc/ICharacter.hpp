@@ -18,7 +18,9 @@ class ICharacter {
 
 	protected:
 		std::string _name;
+		int max_equiped;
 		AMateria* _inventory[4];
+		int slot;
 };
 
 #endif

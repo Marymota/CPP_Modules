@@ -1,7 +1,6 @@
 #ifndef __CURE_HPP__
 #define __CURE_HPP__
 
-#include <iostream>
 #include "AMateria.hpp"
 
 class Cure : public AMateria {
@@ -14,6 +13,7 @@ class Cure : public AMateria {
 		Cure(std::string const&);
 
 		AMateria*	clone() const;
+		void use(ICharacter& target);
 };
 
 #endif

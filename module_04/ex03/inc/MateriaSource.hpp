@@ -1,7 +1,6 @@
 #ifndef __MATERIASOURCE_HPP__
 #define __MATERIASOURCE_HPP__
 
-#include <iostream>
 #include "IMateriaSource.hpp"
 
 // Base class

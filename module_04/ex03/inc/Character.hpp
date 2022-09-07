@@ -1,7 +1,6 @@
 #ifndef __CHARACTER_HPP__
 #define __CHARACTER_HPP__
 
-#include <iostream>
 #include "ICharacter.hpp"
 
 class Character : public ICharacter{

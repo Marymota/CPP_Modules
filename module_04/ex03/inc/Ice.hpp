@@ -1,7 +1,6 @@
 #ifndef __ICE_HPP__
 #define __ICE_HPP__
 
-#include <iostream>
 #include "AMateria.hpp"
 
 class Ice : public AMateria { 
@@ -14,6 +13,7 @@ class Ice : public AMateria {
 		Ice(std::string const&);
 
 		AMateria*	clone() const;
+		void use(ICharacter& target);
 };
 
 #endif

@@ -1,6 +1,6 @@
 #include "../inc/IMateriaSource.hpp"
 
-IMateriaSource::IMateriaSource() {
+IMateriaSource::IMateriaSource() : max(4) {
 	std::cout << "IMateriaSource default constructor" << std::endl;
 };
 

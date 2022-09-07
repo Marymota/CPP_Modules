@@ -14,21 +14,44 @@ Character& Character::operator=(const Character& ) {
 	return (*this);
 };
 
-Character::~Character() {};
+Character::~Character() {
+		slot = 0;
+};
+
+Character::Character(std::string const& name) {
+	_name = name;
+	slot = 0;
+}
 
 std::string const& Character::getName() const {
 	return _name;
 }
 
 void Character::equip(AMateria* m) {
-	_inventory[0] = m;
+	if  (slot < max_equiped)
+		_inventory[slot++] = m;
+	else {
+		std::cout << "Your inventory is full" << std::endl;
+		return;
+	}
 };
 
 void Character::unequip(int idx) {
-	(void) idx;
+	if (_inventory[idx] != 0) {
+		_inventory[idx] = 0;
+		--slot; 
+	}
+	else {
+		std::cout << "Nothing equiped!" << std::endl;
+		return;
+	}
+
 };
 
 void Character::use(int idx, ICharacter& target) {
-	(void) idx;
-	(void) target;
+	if (idx < 0 || idx >= slot) {
+		std::cout << "Equip a Materia first" << std::endl;
+		return;
+	}
+	_inventory[idx]->use(target);
 };
