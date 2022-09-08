@@ -24,11 +24,10 @@ void	Contact::getall()
 	std::cout << phone_number 	<<	std::endl;
 	std::cout << darkest_secret <<	std::endl;
 }
-// Some characters are counted double of the size 'ç' what can cause errors
+
 std::string	Contact::getcontact(std::string value)
 {
-	if (value.compare("first") == 0)
-	{
+	if (value.compare("first") == 0) {
 		if (first_name.size() > 10)
 			return (first_name.substr(0, 9) + ".");
 		else
