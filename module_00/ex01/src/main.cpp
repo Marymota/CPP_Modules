@@ -85,22 +85,30 @@ int main(void)
 	PhoneBook phonebook;
 	Contact newContact;
 	int index;
+	int contacts = 0;
 
 	printIntro();
 	index =	phonebook.set_index(0);
-	while (1)
+	while (std::cin)
 	{
 		printOptions();
 		std::cin >> option;
 		if (option.compare("ADD") == 0 || option.compare("add") == 0)
 		{
-			if (index == 8)
-				phonebook.set_index(--index);
-			std::cout << "\nAdd a contact\n";
-			newContact.addcontact();
-			phonebook.set_contact(newContact, index);
-			if (index != 8)
+			if (index == 8) {
+				if (contacts == 8)
+					contacts = 0;
+				std::cout << "\nAdd a contact\n";
+				newContact.addcontact();
+				phonebook.set_contact(newContact, contacts);
+			}
+			else {
+				std::cout << "\nAdd a contact\n";
+				newContact.addcontact();
+				phonebook.set_contact(newContact, index);
 				phonebook.set_index(++index);
+			}
+			++contacts;
 			std::cout << "\nNew contact added!\n";
 		}
 		else if (option.compare("SEARCH") == 0 || option.compare("search") == 0)
