@@ -1,26 +1,34 @@
 #include "../inc/Character.hpp"
 
-Character::Character() {
-	std::cout << "Character default constructor" << std::endl;
+Character::Character() : max_equiped(4) {
+	for(int i = 0; i < max_equiped; i++)
+		_inventory[i] = 0;
 };
 
-Character::Character(const Character& obj) : ICharacter() {
-	std::cout << "Character copy constructor" << std::endl;
-	*this = obj;
+Character::Character(const Character& obj) : max_equiped(4){
+	_name = obj._name;
+	for(int i = 0; i < max_equiped; i++)
+		_inventory[i] = 0;
+	for(int i = 0; i < max_equiped; i++)
+		_inventory[i] = obj._inventory[i];
+	slot = obj.slot;
 };
 
-Character& Character::operator=(const Character& ) {
-	std::cout << "Character copy assignment operator" << std::endl;
+Character& Character::operator=(const Character& obj) {
+	_name = obj._name;
+	for(int i = 0; i < max_equiped; i++)
+		_inventory[i] = 0;
+	for(int i = 0; i < max_equiped; i++)
+		_inventory[i] = obj._inventory[i];
+	slot = obj.slot;
 	return (*this);
 };
 
-Character::~Character() {
-		slot = 0;
-};
+Character::~Character() {};
 
-Character::Character(std::string const& name) {
-	_name = name;
+Character::Character(std::string const& name) : max_equiped(4) {
 	slot = 0;
+	_name = name;
 }
 
 std::string const& Character::getName() const {
@@ -28,8 +36,9 @@ std::string const& Character::getName() const {
 }
 
 void Character::equip(AMateria* m) {
-	if  (slot < max_equiped)
+	if  (slot < max_equiped) {
 		_inventory[slot++] = m;
+	}
 	else {
 		std::cout << "Your inventory is full" << std::endl;
 		return;
@@ -39,19 +48,19 @@ void Character::equip(AMateria* m) {
 void Character::unequip(int idx) {
 	if (_inventory[idx] != 0) {
 		_inventory[idx] = 0;
-		--slot; 
+		--slot;
 	}
 	else {
 		std::cout << "Nothing equiped!" << std::endl;
 		return;
 	}
-
 };
 
 void Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || idx >= slot) {
-		std::cout << "Equip a Materia first" << std::endl;
+	if (idx >= max_equiped) {
+		std::cout << "This slot is empty" << std::endl;
 		return;
 	}
 	_inventory[idx]->use(target);
 };
+

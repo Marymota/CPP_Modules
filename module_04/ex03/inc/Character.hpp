@@ -18,7 +18,11 @@ class Character : public ICharacter{
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 
-
+	protected:
+		std::string _name;
+		const int max_equiped;
+		AMateria* _inventory[4];
+		int slot;
 };
 
 #endif

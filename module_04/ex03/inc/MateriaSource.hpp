@@ -12,11 +12,13 @@ class MateriaSource : public IMateriaSource {
 		MateriaSource& operator=(const MateriaSource&);
 		~MateriaSource();
 
-	protected:
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
-		std::string const& getName() const;
-		std::string _name;
+
+	private:
+		AMateria* _forge[4];
+		const int max;
+		int slot;
 };
 
 #endif
