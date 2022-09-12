@@ -1,8 +1,3 @@
-/*	Classe implementation;
-	 	Public and private arguments;
-		Set and get arguments; 
-*/
-
 #include "../inc/PhoneBook.hpp"
 
 int	valid_phone(std::string phone_number)
@@ -24,40 +19,46 @@ int	valid_phone(std::string phone_number)
 	return (1);
 }
 
+// 'ç' will be interpreted as 2 characters
 void	print_contacts(PhoneBook phonebook)
 {
 	int i = -1;
 
-	std::cout << "|     index|" << " firstname|" << "  lastname|" << "  nickname|" << std::endl;
+	std::wcout << "|     index|" << " firstname|" << "  lastname|" << "  nickname|" << std::endl;
 	while (++i < phonebook.get_index())
 	{
 		std::cout << "|" << std::setw(10) << std::right << i + 1
-		<< "|" << std::setw(10) << std::right << phonebook.get_contact(i).getcontact("first")
-		<< "|" << std::setw(10) << std::right << phonebook.get_contact(i).getcontact("last") 
-		<< "|" << std::setw(10) << std::right << phonebook.get_contact(i).getcontact("nick") 
+		<< "|" << std::right << std::setw(10) << phonebook.get_contact(i).getcontact("first")
+		<< "|" << std::right << std::setw(10) << phonebook.get_contact(i).getcontact("last") 
+		<< "|" << std::right << std::setw(10) << phonebook.get_contact(i).getcontact("nick") 
 		<< "|" << std::endl;
 	}	
 }
 
-// How to check index without exit the program if a letter is given instead of a number?
 int	search(PhoneBook phonebook)
 {
-	int index = 0;
+	int index;
+	int flag = 1;
 
 	print_contacts(phonebook);
-	std::cout << "Choose a contact from 1 to 8\n";
-	std::cin >> index;
-	if (index > 8)
-		std::cout << "\nThe contact place is not valid: " << index << std::endl;
-	else if (index <= 0)
-	{
-		std::cout << "\nThe contact place is not valid!" << std::endl;
-		exit(EXIT_FAILURE);
+	while (flag) {
+		std::cout << "Choose a contact from 1 to 8\n";
+		if (!(std::cin >> index)) {
+			std::cin.clear(); 
+			std::cin.ignore(10000, '\n');
+			std::cout << "\nThe contact place is not valid: " << index << std::endl;
+		}
+		else if (index > 8)
+			std::cout << "\nThe contact place is not valid: " << index << std::endl;
+		else if (index <= 0)
+			std::cout << "\nThe contact place is not valid!" << std::endl;
+		else if (index > phonebook.get_index())
+			std::cout << "\nThe " << index << " contact place was not filled yet" << std::endl;
+		else {
+			phonebook.get_contact(index - 1).getall();
+			flag = 0;
+		}	
 	}
-	else if (index > phonebook.get_index())
-		std::cout << "\nThe " << index << " contact place was not filled yet" << std::endl;
-	else
-		phonebook.get_contact(index - 1).getall();
 	return (0);
 }
 
@@ -84,22 +85,30 @@ int main(void)
 	PhoneBook phonebook;
 	Contact newContact;
 	int index;
+	int contacts = 0;
 
 	printIntro();
 	index =	phonebook.set_index(0);
-	while (1)
+	while (std::cin)
 	{
 		printOptions();
 		std::cin >> option;
 		if (option.compare("ADD") == 0 || option.compare("add") == 0)
 		{
-			if (index == 8)
-				phonebook.set_index(--index);
-			std::cout << "\nAdd a contact\n";
-			newContact.addcontact();
-			phonebook.set_contact(newContact, index);
-			if (index != 8)
+			if (index == 8) {
+				if (contacts == 8)
+					contacts = 0;
+				std::cout << "\nAdd a contact\n";
+				newContact.addcontact();
+				phonebook.set_contact(newContact, contacts);
+			}
+			else {
+				std::cout << "\nAdd a contact\n";
+				newContact.addcontact();
+				phonebook.set_contact(newContact, index);
 				phonebook.set_index(++index);
+			}
+			++contacts;
 			std::cout << "\nNew contact added!\n";
 		}
 		else if (option.compare("SEARCH") == 0 || option.compare("search") == 0)
