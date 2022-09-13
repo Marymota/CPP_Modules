@@ -11,6 +11,8 @@ class AMateria {
 		std::string _type; //	[...]
 		
 	public:
+		AMateria();
+		AMateria(const AMateria&);
 		AMateria(std::string const & type);
 		virtual ~AMateria(); //	[...]
 

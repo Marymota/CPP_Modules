@@ -9,27 +9,39 @@ MateriaSource::MateriaSource() : max(4) {
 };
 
 MateriaSource::MateriaSource(const MateriaSource& obj) : max(4) {
-	for(int i = 0; i < max; i++)
-		_forge[i] = 0;
-	for(int i = 0; i < max; i++)
-		_forge[i] = obj._forge[i];
+	for(int i = 0; i < max; i++) {
+		if (obj._forge[i] != 0)
+			this->_forge[i] = obj._forge[i];
+		else
+			this->_forge[i] = 0;
+	}
 	slot = obj.slot;
 };
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& obj) {
-	slot = 0;
-	for(int i = 0; i < max; i++)
-		_forge[i] = 0;
-	for(int i = 0; i < max; i++)
-		_forge[i] = obj._forge[i];
+	for(int i = 0; i < max; i++) {
+		if (this->_forge[i] != 0)
+			delete this->_forge[i];
+		if (obj._forge[i] != 0)
+			this->_forge[i] = obj._forge[i];
+		else
+			this->_forge[i] = 0;
+	}
+	slot = obj.slot;
 	return (*this);
 };
 
-MateriaSource::~MateriaSource() {};
+MateriaSource::~MateriaSource() {
+	for(int i = 0; i < max; i++) {
+		if (this->_forge[i] != 0)
+			delete this->_forge[i];
+	}
+};
 
 void MateriaSource::learnMateria(AMateria* obj){
-	if (slot != 0 && slot != max)
-		_forge[slot] = obj;
+	if (slot != 0 && slot != max) {
+		_forge[slot++] = obj;
+	}
 };
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
