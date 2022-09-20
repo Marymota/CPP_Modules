@@ -14,13 +14,13 @@ class Bureaucrat {
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator=(const Bureaucrat&);
 		~Bureaucrat();
-
-		Bureaucrat& operator<<(const Bureaucrat&);
-
-		std::string getName();
-		int getGrade();
+		std::string getName() const;
+		int getGrade() const;
 		void increment();
 		void decrement();
 };
+
+std::ostream& operator<<(std::ostream& output, const Bureaucrat& obj);
+
 
 #endif
