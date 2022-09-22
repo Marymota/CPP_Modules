@@ -26,17 +26,25 @@ class Form {
 		// throw a Form::GradeTooLowException
 		void beSigned(Bureaucrat&);
 
+		class GradeTooLowException : public std::exception {
+			public:
+				const char* what() const throw ();
+		};
+
+		class GradeTooHighException : public std::exception {
+			public:
+				const char* what() const throw ();
+		};
+
 	private:											
 		std::string const _name; 										
 		const int _grade_sign;			
 		const int _grade_exec;
 		bool _sign;
 
-		void GradeTooHighException();
-		void GradeTooLowException();
 };
 
-std::ostream& operator<<(std::ostream&, const Bureaucrat&); //Overload (<<) operator
+std::ostream& operator<<(std::ostream&, const Form&); //Overload (<<) operator
 
 
 #endif

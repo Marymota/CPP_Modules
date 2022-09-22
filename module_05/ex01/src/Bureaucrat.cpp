@@ -1,13 +1,14 @@
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Exception.hpp"
 
 Bureaucrat::Bureaucrat() : _name("none"), _grade(0){
 	std::cout << "Bureaucrat Default Consructor" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
-	if (_grade < 1 || _grade > 150) 
-		throw(Exception("Wrong grade"));
+Bureaucrat::Bureaucrat(std::string const& name, int grade) : _name(name), _grade(grade) {
+	if (_grade < 1 ) 
+		throw GradeTooHighException();
+	else if (_grade > 150)
+		throw GradeTooLowException();
 	std::cout << "Default Bureaucrat consructor name" << std::endl;
 }
 
@@ -35,14 +36,21 @@ int Bureaucrat::getGrade() const {
 
 void Bureaucrat::increment() {
 	if (--_grade < 1) {
-		throw(Exception("Grade is too high!"));
+		throw GradeTooHighException();
 	}
-
 }
 
 void Bureaucrat::decrement() {
 	if (++_grade > 150)
-		throw (Exception("Grade is too low!"));
+		throw GradeTooLowException();
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw () {
+	return "Grade is too high!";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw () {
+	return "Grade is too low!";
 }
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& obj) {
