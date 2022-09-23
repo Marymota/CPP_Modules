@@ -4,6 +4,10 @@
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
 
+	std::cout << std::endl;
+	std::cout << "b.x: " << b.gety() << std::endl;
+	std::cout << std::endl;
+
 	float _area = area (a.getx(), a.gety(), b.getx(), b.gety(), c.getx(), c.gety());
 	float _a = area (point.getx(), point.gety(), b.getx(), b.gety(), c.getx(), c.gety());
 	float _b = area (a.getx(), a.gety(), point.getx(), point.gety(), c.getx(), c.gety());

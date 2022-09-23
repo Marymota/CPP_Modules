@@ -18,8 +18,8 @@ class Point {
 		float gety() const;
 		
 	private:
-		Fixed x;
-		Fixed y;
+		const Fixed x;
+		const Fixed y;
 };
 
 #endif

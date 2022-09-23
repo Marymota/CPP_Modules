@@ -66,9 +66,9 @@ float Fixed::toFloat( void ) const {
 /**********************************************************/
 /*									COMPARISSON OPERATORS									*/
 
-bool Fixed::operator	>		(const Fixed& obj) const { if( fx >	 obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	>	(const Fixed& obj) const { if( fx >	 obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	>=	(const Fixed& obj) const { if( fx >= obj.fx) { return true; } else { return false; }}
-bool Fixed::operator	<		(const Fixed& obj) const { if( fx <	 obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	<	(const Fixed& obj) const { if( fx <	 obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	<=	(const Fixed& obj) const { if( fx <= obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	==	(const Fixed& obj) const { if( fx == obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	!=	(const Fixed& obj) const { if( fx != obj.fx) { return true; } else { return false; }}
