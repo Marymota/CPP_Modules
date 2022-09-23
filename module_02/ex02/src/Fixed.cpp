@@ -5,30 +5,25 @@
 /**********************************************************/
 
 Fixed::Fixed( void ) : fx(0) {
-	//std::cout << "Default constructor called" << std::endl;
 };
 
 Fixed::Fixed( const Fixed& obj) {
-	//std::cout << "Copy constructor called" << std::endl;
 	*this = obj;
 }
 
 Fixed& Fixed::operator = (const Fixed& obj) {
-	//std::cout << "Copy assignment operator called" << std::endl;
 	fx = obj.getRawBits();
 	return *this;
 }
 
 Fixed::~Fixed() {
-	//std::cout << "Destructor called" << std::endl;
 };
 
 /**********************************************************/
-/*										OTHER CONSTRUCTORS									*/
+/*					OTHER CONSTRUCTORS					  */
 /**********************************************************/
 
 Fixed::Fixed(const int i) {
-	//std::cout << "Int constructor called" << std::endl;
 	fx = i << _bits;	
 	/*	Convert int to fixed-point number	
 				fx = 10		-> 1010 
@@ -37,7 +32,6 @@ Fixed::Fixed(const int i) {
 };
 
 Fixed::Fixed(const float f) {
-	//std::cout << "Float constructor called" << std::endl;
 	fx = std::ceil(f * (1 << _bits));
 	/* Convert float to fixed-point number 
 				fx = 42.42		-> 101010.0110101110000101001
@@ -68,27 +62,24 @@ float Fixed::toFloat( void ) const {
 }
 
 /**********************************************************/
-/*									OPERATOR OVERLOADING									*/
+/*					OPERATOR OVERLOADING				   */
 /**********************************************************/
-/*									COMPARISSON OPERATORS									*/
+/*	COMPARISSON OPERATORS									*/
 
-bool Fixed::operator	>		(const Fixed& obj) const { if( fx >	 obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	>	(const Fixed& obj) const { if( fx >	 obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	>=	(const Fixed& obj) const { if( fx >= obj.fx) { return true; } else { return false; }}
-bool Fixed::operator	<		(const Fixed& obj) const { if( fx <	 obj.fx) { return true; } else { return false; }}
+bool Fixed::operator	<	(const Fixed& obj) const { if( fx <	 obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	<=	(const Fixed& obj) const { if( fx <= obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	==	(const Fixed& obj) const { if( fx == obj.fx) { return true; } else { return false; }}
 bool Fixed::operator	!=	(const Fixed& obj) const { if( fx != obj.fx) { return true; } else { return false; }}
 
-/*									ARITHMETRIC OPERATORS									*/
-// [ !!! ] This may not work in all situations since fx is not a float 
-// but a fixed-point number so I need more testing...
-
+/*	ARITHMETRIC OPERATORS									*/
 Fixed Fixed::operator+(const Fixed& obj) { fx += obj.toFloat() ; return *this; }
 Fixed Fixed::operator-(const Fixed& obj) { fx -= obj.toFloat() ; return *this; }
 Fixed Fixed::operator*(const Fixed& obj) { fx *= obj.toFloat() ; return *this; }
 Fixed Fixed::operator/(const Fixed& obj) { fx /= obj.toFloat() ; return *this; }
 
-/*							INCREMENT / DECREMENT OPERATORS						*/
+/*	INCREMENT / DECREMENT OPERATORS						*/
 
 Fixed& Fixed::operator++() {		// Prefix increment operator
 	++fx;
@@ -147,7 +138,7 @@ const Fixed& Fixed::min(const Fixed& x, const Fixed& y)
 
 
 /**********************************************************/
-/*					OVERLOAD OF THE INSERTION OPERATOR (<<)				*/
+/*			OVERLOAD OF THE INSERTION OPERATOR (<<)		  */
 /**********************************************************/
 
 std::ostream& operator << (std::ostream& out, const Fixed& obj) {
