@@ -1,22 +1,7 @@
-// Create a class in Orthodox Canonical Form that represents a fixed-point number:
-// • Private members:
-// ◦ An integer to store the fixed-point number value.
-// ◦ A static constant integer to store the number of fractional bits. Its value
-// will always be the integer literal 8.
-// • Public members:
-// ◦ A default constructor that initializes the fixed-point number value to 0.
-// ◦ A copy constructor.
-// ◦ A copy assignment operator overload.
-// ◦ A destructor.
-// ◦ A member function int getRawBits( void ) const;
-// that returns the raw value of the fixed-point value.
-// ◦ A member function void setRawBits( int const raw );
-// that sets the raw value of the fixed-point number.
-
 #include "../inc/Fixed.hpp"
 
 /**********************************************************/
-/*								ORTHODOX CANONICAL FORM									*/
+/*					ORTHODOX CANONICAL FORM				  */
 /**********************************************************/
 
 // Default Constructor
@@ -27,13 +12,13 @@ Fixed::Fixed() : fixed_pt(0) {
 // Copy Constructor	
 Fixed::Fixed(Fixed& obj) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = obj; // *this (object b) will be equal to object a; Fixed b( a );
+	*this = obj; // 3. Copy assignment operator called
 }
 
 // Copy assignment Operator
 Fixed& Fixed::operator = (Fixed& obj) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	fixed_pt = obj.getRawBits();
+	fixed_pt = obj.getRawBits(); // 4. 7. getRawBits member function called
 	return *this;
 }
 
@@ -43,7 +28,7 @@ Fixed::~Fixed() {
 };
 
 /**********************************************************/
-/*												ACCESSORS						 						*/
+/*						ACCESSORS					   	  */
 /**********************************************************/
 
 int Fixed::getRawBits( void ) const {
