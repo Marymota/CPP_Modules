@@ -22,6 +22,8 @@ class Form {
 		int getGradeSign() const;
 		int getGradeExec() const;
 
+		void setSigned();
+
 		// Changes the form status if Bureaucrat grade is high enough
 		// throw a Form::GradeTooLowException
 		void beSigned(Bureaucrat&);
@@ -35,6 +37,12 @@ class Form {
 			public:
 				const char* what() const throw ();
 		};
+
+		class FormAlreadySigned : public std::exception {
+			public:
+				const char* what() const throw ();
+		};
+
 
 	private:											
 		std::string const _name; 										

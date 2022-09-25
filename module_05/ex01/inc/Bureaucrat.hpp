@@ -4,6 +4,8 @@
 #include <exception>
 #include <iostream>
 
+class Form;
+
 class Bureaucrat {
 
 		const std::string _name;
@@ -19,6 +21,7 @@ class Bureaucrat {
 		int getGrade() const;
 		void increment();
 		void decrement();
+		void signForm(Form&);
 
 		class GradeTooLowException : public std::exception {
 			public:
