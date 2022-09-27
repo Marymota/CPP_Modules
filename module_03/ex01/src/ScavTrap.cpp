@@ -1,7 +1,8 @@
 #include "../inc/ScavTrap.hpp"
 #include "../inc/ClapTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap() { 
+ScavTrap::ScavTrap() : ClapTrap() {
+	_name = "none";
 	_hp = 100;
 	_energy = 50;
 	_dmg = 20;
@@ -31,7 +32,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 void ScavTrap::attack(const std::string &target)
 {
 	if (_hp <= 0)
-		std::cout << "ScavTrap " << _name << " can't attack. He is already dead... " << std::endl;
+		std::cout << "ScavTrap " << _name << " can't attack. ScavTrap is already dead... " << std::endl;
 	else if (_energy > 0)
 	{
 		std::cout << "ScavTrap " << _name << " slashes " << target 

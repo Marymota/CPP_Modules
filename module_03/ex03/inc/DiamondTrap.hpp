@@ -16,7 +16,7 @@ of the ClapTrap class, shared by both the ScavTrap and
 FragTrap classes.
 */
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap{
 
 	public:
 		DiamondTrap();
@@ -33,7 +33,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 		void whoAmI(void);
 	
 	private:
-		std::string _clap_name;
+		std::string _name;
 };
 
 #endif
