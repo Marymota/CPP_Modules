@@ -3,13 +3,13 @@
 #include <iostream>
 #include <exception>
 
-static void formvalid() {
-	std::cout << "--------------" << std::endl;
-	std::cout << "| Valid Form |" << std::endl;
-	std::cout << "--------------" << std::endl;
+static void gradevalid() {
+	std::cout << "---------------" << std::endl;
+	std::cout << "| Valid Grade |" << std::endl;
+	std::cout << "---------------" << std::endl;
 	try {
-		Form form("Form", 5, 10);
-		std::cout << form << std::endl;
+		Bureaucrat almound("Almound", 5);
+		std::cout << almound << std::endl;
 	}
 	catch (const std::exception& e){
 		std::cerr << e.what() << std::endl;
@@ -17,18 +17,12 @@ static void formvalid() {
 	std::cout << std::endl;
 }
 
-static void signform() {
-	std::cout << "-------------" << std::endl;
-	std::cout << "| Sign Form |" << std::endl;
-	std::cout << "-------------" << std::endl;
+static void gradetoohigh() {
+	std::cout << "------------------" << std::endl;
+	std::cout << "| Grade too High |" << std::endl;
+	std::cout << "------------------" << std::endl;
 	try {
-		Bureaucrat cloud("Cloud", 1);
-		Form form("Form", 5, 10);
-		std::cout << cloud << std::endl;
-		std::cout << form << std::endl;
-		cloud.signForm(form);
-		std::cout << cloud << std::endl;
-		std::cout << form << std::endl;
+		Bureaucrat almound("Almound", -1);
 	}
 	catch (const std::exception& e){
 		std::cerr << e.what() << std::endl;
@@ -36,18 +30,48 @@ static void signform() {
 	std::cout << std::endl;
 }
 
-static void dontsignform() {
-	std::cout << "--------------" << std::endl;
-	std::cout << "| !Sign Form |" << std::endl;
-	std::cout << "--------------" << std::endl;
+static void gradetoolow() {
+	std::cout << "-----------------" << std::endl;
+	std::cout << "| Grade too Low |" << std::endl;
+	std::cout << "-----------------" << std::endl;
 	try {
-		Bureaucrat cloud("Cloud", 10);
-		Form form("Form", 5, 10);
+		Bureaucrat almound("Almound", 200);
+	}
+	catch (const std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+static void 	gradeincrement() {
+	std::cout << "-------------------" << std::endl;
+	std::cout << "| Grade Increment |" << std::endl;
+	std::cout << "-------------------" << std::endl;
+	try {
+		Bureaucrat cloud("Cloud", 5);
 		std::cout << cloud << std::endl;
-		std::cout << form << std::endl;
-		cloud.signForm(form);
+		while (1) {
+			cloud.increment();
+			std::cout << cloud << std::endl; 
+		}
+	}
+	catch (const std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+static void gradedecrement() {
+	std::cout << "-------------------" << std::endl;
+	std::cout << "| Grade Decrement |" << std::endl;
+	std::cout << "-------------------" << std::endl;
+	try {
+		Bureaucrat cloud("Cloud", 145);
 		std::cout << cloud << std::endl;
-		std::cout << form << std::endl;
+		while (1) {
+			cloud.decrement();
+			std::cout << cloud << std::endl;
+		}
 	}
 	catch (const std::exception& e){
 		std::cerr << e.what() << std::endl;
@@ -56,9 +80,11 @@ static void dontsignform() {
 }
 
 int main (void) {
-	formvalid();
-	signform();
-	dontsignform();
+	gradevalid();
+	gradetoohigh();
+	gradetoolow();
+	gradeincrement();
+	gradedecrement();
 
 	return 0;
 }
