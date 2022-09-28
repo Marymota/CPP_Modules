@@ -1,4 +1,4 @@
-NAME				:=		form
+NAME				:=		bureaucrat
 
 PATH_SRC		:=		src
 PATH_INC		:=		inc

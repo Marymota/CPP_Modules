@@ -1,80 +1,64 @@
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Exception.hpp"
-#include "../inc/Form.hpp"
 
 #include <iostream>
 #include <exception>
 
-
-// Implement Form::beSigned
-// Implement Bureaucrat::signForm
-
-static void gradetoohigh() {
-	std::cout << "< Grade too high >" << std::endl;
+static void formvalid() {
+	std::cout << "--------------" << std::endl;
+	std::cout << "| Valid Form |" << std::endl;
+	std::cout << "--------------" << std::endl;
 	try {
-		Form form("form", -3, 10);
+		Form form("Form", 5, 10);
+		std::cout << form << std::endl;
 	}
 	catch (const std::exception& e){
-		std::cerr << "Exception: " << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
 }
 
-static void gradetoolow() {
-	std::cout << "< Grade too low >" << std::endl;
+static void signform() {
+	std::cout << "-------------" << std::endl;
+	std::cout << "| Sign Form |" << std::endl;
+	std::cout << "-------------" << std::endl;
 	try {
-		Form form("form", 5, 200);
-		Bureaucrat cloud("Cloud", 5);
-
-		std::cout << form << std::endl;
-		std::cout << cloud << std::endl;
-		form.beSigned(cloud);
-		std::cout << form << std::endl;
-	}
-	catch (const std::exception& e){
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-}
-
-static void gradevalid() {
-	std::cout << "< Valid Grade >" << std::endl;
-	try {
-		Form form("form", 120, 20);
 		Bureaucrat cloud("Cloud", 1);
-		std::cout << form << std::endl;
+		Form form("Form", 5, 10);
 		std::cout << cloud << std::endl;
-		form.beSigned(cloud);
-		std::cout << form << std::endl;
-	}
-	catch (const std::exception& e){
-		std::cerr << "Exception: " << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-}
-
-static void already_signed() {
-	std::cout << "< Can Sign >" << std::endl;
-	std::cout << std::endl;
-	try {
-		Form form("form", 120, 20);
-		Bureaucrat cloud("Cloud", 1);
 		std::cout << form << std::endl;
 		cloud.signForm(form);
+		std::cout << cloud << std::endl;
+		std::cout << form << std::endl;
+	}
+	catch (const std::exception& e){
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+static void dontsignform() {
+	std::cout << "--------------" << std::endl;
+	std::cout << "| !Sign Form |" << std::endl;
+	std::cout << "--------------" << std::endl;
+	try {
+		Bureaucrat cloud("Cloud", 10);
+		Form form("Form", 5, 10);
+		std::cout << cloud << std::endl;
 		std::cout << form << std::endl;
 		cloud.signForm(form);
+		std::cout << cloud << std::endl;
+		std::cout << form << std::endl;
 	}
-	catch (std::exception& e) {
-		std::cout << "Exception: " << e.what() << std::endl;
+	catch (const std::exception& e){
+		std::cerr << e.what() << std::endl;
 	}
-		std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 int main (void) {
-	gradetoohigh();
-	gradetoolow();
-	gradevalid();
-	already_signed();
+	formvalid();
+	signform();
+	dontsignform();
 
 	return 0;
 }

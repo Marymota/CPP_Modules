@@ -2,12 +2,17 @@
 #define __FORM_HPP__
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Exception.hpp"
 
 class Bureaucrat;
 
-class Form {
-																										
+class Form {										// Form class
+			
+	private:											// private (not protected)
+		std::string const _name; 		// constant name
+		bool _sign;									// boolean for sign/unsigned
+		const int _grade_sign;			// constant grade required for signing
+		const int _grade_exec;			// constant grade required for execution
+
 	public:
 		Form();
 		Form(std::string const, const int, const int);
@@ -25,9 +30,10 @@ class Form {
 		void setSigned();
 
 		// Changes the form status if Bureaucrat grade is high enough
-		// throw a Form::GradeTooLowException
+		// else throw a Form::GradeTooLowException
 		void beSigned(Bureaucrat&);
 
+		// Throw Exceptions
 		class GradeTooLowException : public std::exception {
 			public:
 				const char* what() const throw ();
@@ -44,11 +50,6 @@ class Form {
 		};
 
 
-	private:											
-		std::string const _name; 										
-		const int _grade_sign;			
-		const int _grade_exec;
-		bool _sign;
 
 };
 

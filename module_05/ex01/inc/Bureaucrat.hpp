@@ -3,13 +3,14 @@
 
 #include <exception>
 #include <iostream>
+#include "Form.hpp"
 
 class Form;
+class Bureaucrat {									// class Bureaucrat
 
-class Bureaucrat {
-
-		const std::string _name;
-		int _grade;
+	private:
+		const std::string _name;				// constant name
+		int _grade;											// grade (1 - 150) decrescent
 		
 	public:
 		Bureaucrat();
@@ -17,10 +18,12 @@ class Bureaucrat {
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator=(const Bureaucrat&);
 		~Bureaucrat();
+
 		std::string getName() const;
 		int getGrade() const;
 		void increment();
 		void decrement();
+
 		void signForm(Form&);
 
 		class GradeTooLowException : public std::exception {
