@@ -19,6 +19,9 @@ class ClapTrap {
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
+		int getDmg();
+		std::string getName();
+
 	private:
 		std::string _name;
 		int _hp;

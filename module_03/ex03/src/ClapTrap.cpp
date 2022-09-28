@@ -85,6 +85,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 }
 
 int ClapTrap::getDmg( void ) {
-	return _dmg;
+	if (_hp > 0)
+		return _dmg;
+	return 0;
 }
 

@@ -4,9 +4,16 @@
 int main () {
 	int count = 11;
 
+	ClapTrap p0("P0");
+	ClapTrap p01("P01");
+	p0.attack("P01");
+	p0.takeDamage(p01.getDmg());
+	p0.beRepaired(10);
+	std::cout << std::endl;
+
 	ScavTrap p1("P1");
 	ScavTrap p2("P2");
-	ClapTrap p3("P3");
+	ScavTrap p3("P3");
 	std::cout << std::endl;
 	while (count--) { p3.attack("P1"); }
 	p1.takeDamage(p3.getDmg());

@@ -66,10 +66,14 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	else if (_energy > 0)
 	{
-		_hp += amount;
-		std::cout << "ClapTrap " << _name << " repaired " << amount 
-		<< " points. It has " << _hp << " HP left!" << std::endl;
-		_energy--;
+		if (_hp < 10) {
+			_hp += amount;
+			std::cout << "ClapTrap " << _name << " repaired " << amount 
+			<< " points. It has " << _hp << " HP left!" << std::endl;
+			_energy--;
+		}
+		else
+			std::cout << "ClapTrap HP is full!" << std::endl;
 	}
 	else if (_energy == 0) {
 		std::cout << "ClapTrap " << _name 
