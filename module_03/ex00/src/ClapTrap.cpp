@@ -1,6 +1,6 @@
 #include "../inc/ClapTrap.hpp"
 
-ClapTrap::ClapTrap() { std::cout << "A ClapTrap was created" << std::endl; }
+ClapTrap::ClapTrap() : _name(" "), _hp(10), _energy(10), _dmg(0) { std::cout << "A ClapTrap was created" << std::endl; }
 
 ClapTrap::ClapTrap(const ClapTrap &obj) {
 	std::cout << "Copy constructor called" << std::endl;
@@ -82,4 +82,12 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << _name << " repaired " << amount 
 		<< " points. Max HP " << _hp << std::endl;
 	}
+}
+
+int ClapTrap::getDmg() {
+	return _dmg;
+}
+
+std::string ClapTrap::getName() {
+	return _name;
 }
