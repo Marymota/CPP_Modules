@@ -6,9 +6,9 @@ class Form;
 RobotomyRequestForm::RobotomyRequestForm() {}
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : 
-		Form("Robotomy_to_" + target + ";\n", 72, 45){}
+		Form("Robotomy_to_" + target + ";\n", 72, 45), _target(target){}
 
-void RobotomyRequestForm::_execute() const { 
+void RobotomyRequestForm::_execute( ) const {
 	srand(time(0));																	
 	int magic = rand();
 	std::cout << "*** ZZZZZZZZZZZZZ *** " << std::endl;

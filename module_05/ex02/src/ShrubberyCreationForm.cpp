@@ -4,7 +4,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) 
-	: Form(target + "_shrubbery" + ";\n", 145, 137){}
+	: Form(target + "_shrubbery" + ";\n", 145, 137), _target(target + "_shrubbery" ){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : Form() {
 	*this = obj;
@@ -17,9 +17,9 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void ShrubberyCreationForm::_execute() const{
+void ShrubberyCreationForm::_execute( ) const {
 	std::ofstream file;
-	file.open("_shrubbery");
+	file.open(_target.c_str());
 	file << 
 "            =-/	\n"
 "    \\|/   \\\\ /	\n"
@@ -29,7 +29,6 @@ void ShrubberyCreationForm::_execute() const{
 "      |||/			\n"
 "      ||||			\n"
 ".....//|||\\....	\n";
-
 	std::cout <<
 "	    =-/			\n"
 "     \\|/  \\\\ /	\n"

@@ -7,6 +7,9 @@ class Form;
 
 class RobotomyRequestForm : public Form {
 
+	private:
+		std::string _target;
+		
 	public:
 		RobotomyRequestForm();
 		RobotomyRequestForm(const std::string& );
@@ -15,7 +18,6 @@ class RobotomyRequestForm : public Form {
 		~RobotomyRequestForm();
 
 		void _execute() const;
-
 };
 
 std::ostream& operator<<(std::ostream&, const RobotomyRequestForm&); //Overload (<<) operator

@@ -21,7 +21,7 @@ class Form {							// Form class
 		Form(std::string const, const int, const int);
 		Form(const Form&);
 		Form& operator=(const Form&);
-		~Form();
+		virtual ~Form() = 0;
 	
 		//Getters
 		std::string getName() const;
@@ -53,12 +53,9 @@ class Form {							// Form class
 
 	protected:
 		virtual void _execute() const = 0;
-	
-	// Function declared but not defined inside the Base class, only in the derived classes.
-	// The function _execute() of the correspondent class type of form will be called instead. 
+
 };
 
 std::ostream& operator<<(std::ostream&, const Form&); //Overload (<<) operator
-
 
 #endif
