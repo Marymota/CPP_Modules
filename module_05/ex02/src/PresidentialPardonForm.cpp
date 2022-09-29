@@ -5,8 +5,9 @@ class Form;
 
 PresidentialPardonForm::PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target){
-	std::cout << target << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : 
+	Form("Pardon_to_" + target + ";\n", 25, 5){
+	std::cout << target << "has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : Form() {
@@ -19,3 +20,13 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
+
+std::ostream& operator<<(std::ostream& output, const PresidentialPardonForm& obj) {
+	output << obj.getName() << "Sign grade: " << obj.getGradeSign() << ";\n";
+	output << "Execution grade: " << obj.getGradeExec() << ";\n"; 
+	if (obj.getSign())
+		output << "<signed>";
+	else
+		output << "<unsigned>";
+	return output;
+}

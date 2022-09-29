@@ -1,21 +1,26 @@
 #ifndef __FORM_HPP__
 #define __FORM_HPP__
 
+#include <fstream>
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Exception.hpp"
-#include <iostream>
+
 
 class Bureaucrat;
 
-class Form {
-																										
+class Form {										// Form class
+			
+	private:											// private (not protected)
+		std::string const _name; 		// constant name
+		bool _sign;									// boolean for sign/unsigned
+		const int _grade_sign;			// constant grade required for signing
+		const int _grade_exec;			// constant grade required for execution
+
 	public:
 		Form();
 		Form(std::string const, const int, const int);
 		Form(const Form&);
 		Form& operator=(const Form&);
 		virtual ~Form() = 0;
-
 	
 		//Getters
 		std::string getName() const;
@@ -23,12 +28,13 @@ class Form {
 		int getGradeSign() const;
 		int getGradeExec() const;
 
-		void setSigned();
-
 		// Changes the form status if Bureaucrat grade is high enough
-		// throw a Form::GradeTooLowException
+		// else throw a Form::GradeTooLowException
 		void beSigned(Bureaucrat&);
 
+		void execute(Bureaucrat const& executor) const;
+
+		// Throw Exceptions
 		class GradeTooLowException : public std::exception {
 			public:
 				const char* what() const throw ();
@@ -45,11 +51,6 @@ class Form {
 		};
 
 
-	private:											
-		std::string const _name; 										
-		const int _grade_sign;			
-		const int _grade_exec;
-		bool _sign;
 
 };
 

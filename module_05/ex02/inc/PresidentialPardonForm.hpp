@@ -15,4 +15,6 @@ class PresidentialPardonForm : public Form {
 		~PresidentialPardonForm();
 };
 
+std::ostream& operator<<(std::ostream&, const PresidentialPardonForm&); //Overload (<<) operator
+
 #endif
