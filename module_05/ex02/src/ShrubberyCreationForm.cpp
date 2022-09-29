@@ -17,23 +17,30 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-
-void ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+void ShrubberyCreationForm::_execute() const{
 	std::ofstream file;
-	file.open((target + "_shrubbery").c_str());
+	file.open("_shrubbery");
 	file << 
-"		 	         =-/		\n"
-"			\\|/    \\\\ /	\n"
-"			\\ |  //_//-<_	\n"
-"	=--\\\\\\//\\|//-=	\n"
-"		\\\\\\////_				\n"
-"	      |||/					\n"
-"	      ||||					\n"
-"	.....//|||\\....   	\n";
+"            =-/	\n"
+"    \\|/   \\\\ /	\n"
+"   \\ |  //_//-<_	\n"
+"=--\\\\\\//\\|//-=	\n"
+"    \\\\\\////_	\n"
+"      |||/			\n"
+"      ||||			\n"
+".....//|||\\....	\n";
 
+	std::cout <<
+"	    =-/			\n"
+"     \\|/  \\\\ /	\n"
+"    \\ | //_//-<_	\n"
+"=--\\\\\\//\\|//-=	\n"
+"    \\\\\\////_	\n"
+"      |||/			\n"
+"      ||||			\n"
+".....//|||\\....   \n";
 	file.close();
 }
-
 
 std::ostream& operator<<(std::ostream& output, const ShrubberyCreationForm& obj) {
 	output << obj.getName() << "Sign grade: " << obj.getGradeSign() << ";\n";

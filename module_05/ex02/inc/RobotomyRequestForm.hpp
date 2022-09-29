@@ -13,6 +13,9 @@ class RobotomyRequestForm : public Form {
 		RobotomyRequestForm( const RobotomyRequestForm& );
 		RobotomyRequestForm& operator=( const RobotomyRequestForm& );
 		~RobotomyRequestForm();
+
+		void _execute() const;
+
 };
 
 std::ostream& operator<<(std::ostream&, const RobotomyRequestForm&); //Overload (<<) operator

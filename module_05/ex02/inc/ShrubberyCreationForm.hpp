@@ -12,10 +12,11 @@ class ShrubberyCreationForm : public Form {
 		ShrubberyCreationForm( const std::string& );
 		ShrubberyCreationForm( const ShrubberyCreationForm& );
 		ShrubberyCreationForm& operator=( const ShrubberyCreationForm& );
-		virtual ~ShrubberyCreationForm();
+		~ShrubberyCreationForm();
+
+		void _execute() const;
 };
 
-		void execute(Bureaucrat const& executor) const;
 
 std::ostream& operator<<(std::ostream&, const ShrubberyCreationForm&); //Overload (<<) operator
 

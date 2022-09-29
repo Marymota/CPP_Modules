@@ -6,9 +6,7 @@ class Form;
 PresidentialPardonForm::PresidentialPardonForm() {}
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : 
-	Form("Pardon_to_" + target + ";\n", 25, 5){
-	std::cout << target << "has been pardoned by Zaphod Beeblebrox" << std::endl;
-}
+	Form("Pardon_to_" + target + ";\n", 25, 5), _target(target){}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : Form() {
 	*this = obj;
@@ -18,6 +16,11 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	(void) obj;
 	return *this;
 }
+
+void PresidentialPardonForm::_execute() const{
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}
+
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 

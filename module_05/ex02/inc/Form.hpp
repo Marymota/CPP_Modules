@@ -1,17 +1,18 @@
 #ifndef __FORM_HPP__
 #define __FORM_HPP__
 
+#include <cstdlib>
 #include <fstream>
 #include "../inc/Bureaucrat.hpp"
 
 
 class Bureaucrat;
 
-class Form {										// Form class
+class Form {							// Form class
 			
-	private:											// private (not protected)
+	private:							// private (not protected)
 		std::string const _name; 		// constant name
-		bool _sign;									// boolean for sign/unsigned
+		bool _sign;						// boolean for sign/unsigned
 		const int _grade_sign;			// constant grade required for signing
 		const int _grade_exec;			// constant grade required for execution
 
@@ -20,13 +21,13 @@ class Form {										// Form class
 		Form(std::string const, const int, const int);
 		Form(const Form&);
 		Form& operator=(const Form&);
-		virtual ~Form() = 0;
+		~Form();
 	
 		//Getters
 		std::string getName() const;
-		bool getSign() const;
-		int getGradeSign() const;
-		int getGradeExec() const;
+		bool		getSign() const;
+		int			getGradeSign() const;
+		int			getGradeExec() const;
 
 		// Changes the form status if Bureaucrat grade is high enough
 		// else throw a Form::GradeTooLowException
@@ -50,8 +51,11 @@ class Form {										// Form class
 				const char* what() const throw ();
 		};
 
-
-
+	protected:
+		virtual void _execute() const = 0;
+	
+	// Function declared but not defined inside the Base class, only in the derived classes.
+	// The function _execute() of the correspondent class type of form will be called instead. 
 };
 
 std::ostream& operator<<(std::ostream&, const Form&); //Overload (<<) operator

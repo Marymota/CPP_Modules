@@ -1,6 +1,10 @@
+
 #include "../inc/Form.hpp"
 
-Form::Form() : _name("none"), _sign(false), _grade_sign(0), _grade_exec(0) {};
+// ----------------------- CONSTRUCTORS ----------------------
+
+Form::Form() : _name("none"), _sign(false), _grade_sign(0), _grade_exec(0) {
+};
 
 Form::Form(std::string const name, const int grade_sign, const int grade_exec ) 
 	: _name(name), _sign(false), _grade_sign(grade_sign), _grade_exec(grade_exec) {
@@ -21,6 +25,9 @@ Form& Form::operator=(const Form& obj) {
 
 Form::~Form() {};
 
+// ----------------------------------------------------------
+// ----------------------- GETTERS --------------------------
+
 std::string Form::getName() const {	return _name; }
 
 bool Form::getSign() const { return _sign; }
@@ -28,6 +35,9 @@ bool Form::getSign() const { return _sign; }
 int Form::getGradeSign() const { return _grade_sign; }
 
 int Form::getGradeExec() const { return _grade_exec; }
+
+// ---------------------------------------------------------
+// ----------------------- SIGN ----------------------------
 
 void Form::beSigned(Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() <= _grade_sign) {
@@ -40,13 +50,17 @@ void Form::beSigned(Bureaucrat& bureaucrat) {
 		throw(GradeTooLowException());
 }
 
-void Form::execute(Bureaucrat const& executor) const {
-	if (executor.getGrade() <= _grade_exec)
-			ShrubberyCreationForm::execute(executor);
-	else
+// ----------------------------------------------------------
+// ----------------------- EXECUTE --------------------------
+
+void  Form::execute(Bureaucrat const& executor) const {
+	if (executor.getGrade() >= _grade_exec)
 		throw(GradeTooLowException());
+	this->_execute();
 }
 
+// ----------------------------------------------------------
+// ----------------------- EXCEPTIONS -----------------------
 
 const char* Form::GradeTooHighException::what() const throw () {
 	return "Form::Exception: Grade is too high!";
@@ -59,6 +73,9 @@ const char* Form::GradeTooLowException::what() const throw () {
 const char* Form::FormAlreadySigned::what() const throw () {
 	return "Form::Exception: Form already signed";
 }
+
+// ----------------------------------------------------------
+// ----------------------- OVERLOAD -------------------------
 
 std::ostream& operator<<(std::ostream& output, const Form& obj) {
 	output << "Form: " << obj.getName() << " sign grade: " << obj.getGradeSign() << ";\n";
