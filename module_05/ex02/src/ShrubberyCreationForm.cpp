@@ -4,7 +4,7 @@
 ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) 
-	: Form(target + "_shrubbery" + ";\n", 145, 137), _target(target + "_shrubbery" ){}
+	: Form(target + "_shrubbery", 145, 137), _target(target + "_shrubbery" ){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : Form() {
 	*this = obj;
