@@ -3,7 +3,9 @@
 
 #include <exception>
 #include <iostream>
-#include "Form.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
+#include "../inc/RobotomyRequestForm.hpp"
+#include "../inc/PresidentialPardonForm.hpp"
 
 class Form;
 class Intern {									// class Intern
@@ -20,15 +22,17 @@ class Intern {									// class Intern
 
 		Form* makeForm(std::string, std::string);
 
-		class GradeTooLowException : public std::exception {
+		int filterforms(std::string);
+
+		ShrubberyCreationForm*	_SCF(std::string);
+		RobotomyRequestForm* 		_RRF(std::string);
+		PresidentialPardonForm*	_PPF(std::string);
+
+		class FormNotFound : public std::exception {
 			public:
 				const char* what() const throw ();
 		};
 
-		class GradeTooHighException : public std::exception {
-			public:
-				const char* what() const throw ();
-		};
 };
 
 
