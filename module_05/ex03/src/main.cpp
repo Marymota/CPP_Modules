@@ -7,6 +7,22 @@
 #include <iostream>
 #include <exception>
 
+// WHY SEGFAULT?
+void segfault (void) {
+ 	std::cout << std::endl;
+ 	Intern someRandomIntern;
+ 	Bureaucrat cloud("Cloud", 4);
+ 	std::cout << cloud << std::endl;
+ 	Form* rrf;
+ 	try {
+ 		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+ 		cloud.executeForm(*rrf);
+ 	} catch (const std::exception& e) {
+ 		std::cerr << e.what() << std::endl;
+ 	}
+ 	delete rrf;
+}
+
 void shrubb() {
  	Intern someRandomIntern;
  	Form* rrf;
@@ -56,22 +72,7 @@ int main (void) {
 	robot();
 	president();
 	other();
+	segfault();
  	return 0;
  }
 
-// WHY SEGFAULT?
-// int main (void) {
-// 	std::cout << std::endl;
-// 	Intern someRandomIntern;
-// 	Bureaucrat cloud("Cloud", 4);
-// 	std::cout << cloud << std::endl;
-// 	Form* rrf;
-// 	try {
-// 		rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
-// 		cloud.executeForm(*rrf);
-// 	} catch (const std::exception& e) {
-// 		std::cerr << e.what() << std::endl;
-// 	}
-// 	delete rrf;
-// 	return 0;
-// }
