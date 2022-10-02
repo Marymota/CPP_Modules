@@ -21,7 +21,6 @@ void PresidentialPardonForm::_execute( ) const{
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
-
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
 std::ostream& operator<<(std::ostream& output, const PresidentialPardonForm& obj) {
