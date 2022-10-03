@@ -2,6 +2,9 @@
 #define __INT_HPP__
 
 #include <iostream>
+#include <cstdlib>
+#include <string>
+#include <iomanip>
 
 class Convert {
 
@@ -16,26 +19,17 @@ class Convert {
 		void setInt(char* arg);
 		void setFloat(char* arg);
 		void setDouble(char* arg);
-		std::string getChar() const;
-		int getInt() const;
-		int getFloat() const;
-		int getDouble() const;
-		int getErr(int) const;
 
-		//class Impossible : public std::exception {
-		//	public:
-		//		const char* what() const throw ();
-		//};
-		
+		void getType(char *, std::string);
+
+		int 	checkPsLiterals(std::string);
+		void	returnPseudo(char, std::string);
+
+
 	private:
-		std::string _char;
-		int					_int;
-		float				_float;
-		double			_double;
-		int _err[4];
+		double			_value;
 };
 
-std::ostream& operator<<(std::ostream&, const Convert&); //Overload (<<) operator
 
 
 #endif
