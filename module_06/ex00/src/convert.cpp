@@ -8,9 +8,9 @@
 			return ;
 		getType(arg, str);
 		setChar(arg);
-		setInt(arg);
-		setFloat(arg);
-		setDouble(arg);
+		setInt();
+		setFloat();
+		setDouble();
 	}
 
 	Convert::Convert( Convert& arg) {
@@ -45,7 +45,6 @@
 	}
 
 	void Convert::getType(char* arg, std::string str) {
-		// check if arg is a printable character
 		if (str.length() == 1 && 
 			((arg[0] >= 33 && arg[0] <= 47) || (arg[0] >= 58 && arg[0] <= 126))) {
 				_value = arg[0];
@@ -73,8 +72,7 @@
 		}
 	}
 
-	void Convert::setInt(char* arg) {
-		(void) arg;
+	void Convert::setInt() {
 		int _int = static_cast<int>(_value);
 		if (_int == -2147483648)
 			std::cout << "int: impossible" << std::endl;
@@ -82,18 +80,10 @@
 			std::cout << "int: " << _int << std::endl;
 	}
 
-	void Convert::setFloat(char* arg) {
-		std::string str = static_cast<std::string>(arg);
-		for (int i = 0; arg[i] != '\0'; i++) {
-			std::cout << "float: " << _value << "f" << std::endl;
-			break;
-		}
+	void Convert::setFloat() {
+		std::cout << "float: " << std::fixed << std::setprecision(1) << _value << "f" << std::endl;
 	}
 
-	void Convert::setDouble(char* arg) {
-		for (int i = 0; arg[i] != '\0'; i++) {
-			if (arg[i - 1] == 0)
-				std::cout << "double: " << _value << std::endl;
-			break;
-		}
+	void Convert::setDouble() {
+		std::cout << std::fixed << std::setprecision(1) << "double: " << _value << std::endl;
 	}
