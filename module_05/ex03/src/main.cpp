@@ -7,7 +7,7 @@
 #include <iostream>
 #include <exception>
 
-// WHY SEGFAULT?
+ //WHY SEGFAULT?
 void segfault (void) {
  	std::cout << std::endl;
  	Intern someRandomIntern;
@@ -60,7 +60,7 @@ void other() {
  	Intern someRandomIntern;
  	Form* rrf;
  	try {
- 		rrf = someRandomIntern.makeForm("shrub creation", "Bender");
+ 		rrf = someRandomIntern.makeForm("cloud creation", "Bender");
  	} catch (const std::exception& e) {
  		std::cerr << e.what() << std::endl;
  	}

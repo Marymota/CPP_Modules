@@ -28,6 +28,7 @@ class Convert {
 
 	private:
 		double			_value;
+		int				_precision;
 };
 
 

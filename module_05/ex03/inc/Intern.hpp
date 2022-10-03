@@ -12,7 +12,7 @@ class Intern {									// class Intern
 
 	private:
 		const std::string _name;				// constant name
-		int _grade;											// grade (1 - 150) decrescent
+		int _grade;								// grade (1 - 150) decrescent
 		
 	public:
 		Intern();
@@ -25,7 +25,7 @@ class Intern {									// class Intern
 		int filterforms(std::string);
 
 		ShrubberyCreationForm*	_SCF(std::string);
-		RobotomyRequestForm* 		_RRF(std::string);
+		RobotomyRequestForm* 	_RRF(std::string);
 		PresidentialPardonForm*	_PPF(std::string);
 
 		class FormNotFound : public std::exception {

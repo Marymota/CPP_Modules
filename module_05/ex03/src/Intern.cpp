@@ -16,11 +16,11 @@ Intern::~Intern(){}
 
 int Intern::filterforms(std::string form) {
 	std::string forms[3] = {"shrubbery creation", "robotomy request", "presidential pardom"};
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i <= 2; i++) {
 		if (form.compare(forms[i]) == 0) 
-			return i + 1;
+			return i ;
 	}
-	return (0);
+	return (-1);
 }
 
 ShrubberyCreationForm* Intern::_SCF(std::string target){
@@ -39,22 +39,19 @@ Form* Intern::makeForm(std::string form, std::string target) {
 	int formID = filterforms(form);
 	switch (formID)
 	{
+	case 0:
+		std::cout << "Intern creates " << form << std::endl;
+		return (_SCF(target));
 	case 1:
-		_SCF(target);
 		std::cout << "Intern creates " << form << std::endl;
-		break;
+		return (_RRF(target));
 	case 2:
-		_RRF(target);
 		std::cout << "Intern creates " << form << std::endl;
-		break;
-	case 3:
-		_PPF(target);
-		std::cout << "Intern creates " << form << std::endl;
-		break;
+		return (_PPF(target));
 	default:
-		throw FormNotFound();
+	std::cout << "The specified form doesn't exist!" << std::endl;
+		return (0);
 	}
-	return (0);
 }
 
 
