@@ -19,9 +19,8 @@ class Data {
         int getint() const;
         std::string getstr() const;
 
-
     private:
-        int a;
+        int n;
         std::string str;
 };
 

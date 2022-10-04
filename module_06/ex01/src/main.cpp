@@ -3,17 +3,14 @@
 int main () {
 
     Data data;
-
+		Data convert;
     Data* newData;
     
-    std::cout << data << std::endl;
+		std::cout << "data: " << data << std::endl;
 
-    uintptr_t ptr = data.serialize(&data);
-    newData = data.deserialize(ptr);
+    uintptr_t dataptr = convert.serialize(&data);
+		newData = convert.deserialize(dataptr);
 
-    std::cout << ptr << std::endl;
-    std::cout << "data: " << data << std::endl;
-    std::cout << "newdata: " << *newData << std::endl;
-
-
+    std::cout << "data: " << dataptr << std::endl;
+		std::cout << "newData: " << *newData << std::endl;
 }

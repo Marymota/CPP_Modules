@@ -1,21 +1,22 @@
 #include "../inc/data.hpp"
 
 
-    Data::Data() : a(10), str("Hello World!") {}
+    Data::Data() : n(10), str("Hello Worlds!") {}
 
     Data::Data( Data& obj){
-        (void) obj;
+      *this = obj;
     }
 
     Data& Data::operator=( Data& obj){
-        (void) obj;
+        this->n = obj.n;
+				this->str = obj.str;
         return *this;
     }
 
     Data::~Data(){}
 
     int Data::getint() const{
-        return this->a;
+        return this->n;
     }
 
     std::string Data::getstr() const{
@@ -23,13 +24,11 @@
     }
 
     uintptr_t Data::serialize(Data* ptr){
-        uintptr_t data = reinterpret_cast<uintptr_t>(ptr);
-        return data;
+			return reinterpret_cast<uintptr_t>(ptr);
     }
 
     Data* Data::deserialize(uintptr_t raw){
-        Data* data = reinterpret_cast<Data*>(raw);
-        return data;
+        return reinterpret_cast<Data*>(raw);
     }
 
     std::ostream& operator<<(std::ostream& output, const Data& obj) {
