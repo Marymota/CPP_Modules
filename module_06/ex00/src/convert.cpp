@@ -59,9 +59,7 @@
 
 	void Convert::setChar(char* arg) {
 		std::string str = static_cast<std::string>(arg);
-		if (_value >= '0' && _value <= '9')
-			std::cout << "char: \'" << arg[0] << "\'" << std::endl;
-		else if (_value <= 32 || _value > 126 )
+		if (_value <= 33 || _value > 126 )
 				std::cout << "char: " << "Non displayable" << std::endl;
 		else if (str.length() == 1) {
 			std::cout << "char: \'" << arg[0] << "\'" << std::endl;
@@ -74,16 +72,18 @@
 
 	void Convert::setInt() {
 		int _int = static_cast<int>(_value);
-		if (_int == -2147483648)
+		if (_int == INT_MIN || _int == INT_MAX)
 			std::cout << "int: impossible" << std::endl;
 		else
 			std::cout << "int: " << _int << std::endl;
 	}
 
 	void Convert::setFloat() {
-		std::cout << "float: " << std::fixed << std::setprecision(1) << _value << "f" << std::endl;
+		float _float = static_cast<float>(_value);
+		std::cout << "float: " << std::fixed << std::setprecision(1) << _float << "f" << std::endl;
 	}
 
 	void Convert::setDouble() {
-		std::cout << std::fixed << std::setprecision(1) << "double: " << _value << std::endl;
+		float _double = static_cast<double>(_value);
+		std::cout << std::fixed << std::setprecision(1) << "double: " << _double << std::endl;
 	}

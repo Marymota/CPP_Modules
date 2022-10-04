@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <string>
 #include <iomanip>
+#include <climits>
 
 class Convert {
 
@@ -27,8 +27,7 @@ class Convert {
 
 
 	private:
-		double			_value;
-		int				_precision;
+		double		_value;
 };
 
 
