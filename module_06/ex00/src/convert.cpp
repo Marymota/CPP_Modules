@@ -81,7 +81,7 @@
 
 	void Convert::setFloat(std::string str) {
 		if (str.length() != 1 && _value == 0)
-			std::cout << "int: impossible" << std::endl;
+			std::cout << "float: impossible" << std::endl;
 		else {
 			float _float = static_cast<float>(_value);
 			std::cout << "float: " << std::fixed << std::setprecision(1) << _float << "f" << std::endl;
@@ -90,7 +90,7 @@
 
 	void Convert::setDouble(std::string str) {
 		if (str.length() != 1 && _value == 0)
-			std::cout << "int: impossible" << std::endl;
+			std::cout << "double: impossible" << std::endl;
 		else {
 			float _double = static_cast<double>(_value);
 			std::cout << std::fixed << std::setprecision(1) << "double: " << _double << std::endl;
