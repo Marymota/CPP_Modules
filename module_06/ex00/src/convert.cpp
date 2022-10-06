@@ -8,9 +8,9 @@
 			return ;
 		getType(arg, str);
 		setChar(arg);
-		setInt();
-		setFloat();
-		setDouble();
+		setInt(str);
+		setFloat(str);
+		setDouble(str);
 	}
 
 	Convert::Convert( Convert& arg) {
@@ -32,7 +32,7 @@
 	}
 
 	int Convert::checkPsLiterals(std::string str) {
-		if ((str.compare("-inff") == 0) || (str.compare("-inf") == 0)) {
+		if (((str.compare("-inff") == 0) || (str.compare("-inf") == 0))) {
 			returnPseudo('-', "inf");
 		}
 		else if ((str.compare("+inff") == 0) || (str.compare("+inf") == 0))
@@ -65,25 +65,34 @@
 			std::cout << "char: \'" << arg[0] << "\'" << std::endl;
 		}
 		else {
-			char _char = static_cast<char>(_value);
-			std::cout << "char: \'" << _char << "\'" << std::endl;
+			std::cout << "char: Impossible" << std::endl;
 		}
 	}
 
-	void Convert::setInt() {
+	void Convert::setInt(std::string str) {
 		int _int = static_cast<int>(_value);
-		if (_int == INT_MIN || _int == INT_MAX)
+		if (str.length() != 1 && _value == 0)
+			std::cout << "int: impossible" << std::endl;
+		else if (_int == INT_MIN || _int == INT_MAX)
 			std::cout << "int: impossible" << std::endl;
 		else
 			std::cout << "int: " << _int << std::endl;
 	}
 
-	void Convert::setFloat() {
-		float _float = static_cast<float>(_value);
-		std::cout << "float: " << std::fixed << std::setprecision(1) << _float << "f" << std::endl;
+	void Convert::setFloat(std::string str) {
+		if (str.length() != 1 && _value == 0)
+			std::cout << "int: impossible" << std::endl;
+		else {
+			float _float = static_cast<float>(_value);
+			std::cout << "float: " << std::fixed << std::setprecision(1) << _float << "f" << std::endl;
+		}
 	}
 
-	void Convert::setDouble() {
-		float _double = static_cast<double>(_value);
-		std::cout << std::fixed << std::setprecision(1) << "double: " << _double << std::endl;
+	void Convert::setDouble(std::string str) {
+		if (str.length() != 1 && _value == 0)
+			std::cout << "int: impossible" << std::endl;
+		else {
+			float _double = static_cast<double>(_value);
+			std::cout << std::fixed << std::setprecision(1) << "double: " << _double << std::endl;
+		}
 	}
