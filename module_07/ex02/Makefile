@@ -1,56 +1,58 @@
-NAME					:=		array
+# Name of the program built
+NAME				:=		template
 
-PATH_SRC			:=		./
-PATH_INC			:=		./
-PATH_BUILD		:=		build
+# List of sources
+SRCS				:=		./main.cpp
+OBJS				:=		${SRCS:.cpp=.o}
 
-SRCS					:=		$(shell find $(PATH_SRC) -name *.cpp)
-OBJS					:=		$(SRCS:%.cpp=$(PATH_BUILD)/%.o)
-DEPS					:=		$(OBJS:.o=.d)
-INC_DIRS			:=		$(shell find $(PATH_INC) -type d)
+# Compiler
+CC					:=		c++
 
-CC						:=		c++
+# Flags - compilation
+FLAG_WARNING		:=		-Wall -Wextra -Werror -std=c++98
+FLAG_INC			:= 		-I.
+FLAG_DEBUG			:= 		-g
+FLAGS_COMP			:= 		$(FLAG_WARNING) $(FLAG_INC) $(FLAG_DEBUG)
 
-FLAG_WARN			:=		-Wall -Wextra -Werror
-FLAG_SHADOW		:=		-Wshadow -Wno-shadow	
-FLAG_STD			:=		-std=c++98
-FLAG_MAKE			:=		-MMD -MP
-FLAG_DEBUG		:= 		-g
-FLAG_OPT			:=		-03
-FLAG_COMP			:=		$(FLAG_WARN) $(FLAG_STD) $(FLAG_MAKE) $(FLAG_DEBUG) $(FLAG_MLEAK) $(FLAG_SHADOW)
+# Flags - memory leak check
+FLAG_MEM_LEAK		:= 		-fsanitize=address
 
-FLAG_MLEAK		:= 		-fsanitize=address
+# Others commands
+RM					:=		rm -rf
 
-RM						:=		rm -rf
-
+# Color Code and template code
 _YELLOW				:=		\e[38;5;184m
 _GREEN				:=		\e[38;5;46m
 _RESET				:=		\e[0m
-_INFO					:=		\$(_YELLOW)INFO$(_RESET)]
-_SUCCESS			:=		\$(_GREEN)SUCCESS$(_RESET)]
+_INFO				:=		[$(_YELLOW)INFO$(_RESET)]
+_SUCCESS			:=		[$(_GREEN)SUCCESS$(_RESET)]
 
-all:				init $(NAME)
-						@ printf "$(_SUCCESS) Compilation done\n"
+# General functions
+all:						init $(NAME)
+							@ printf "$(_SUCCESS) Compilation done\n"
 
-init:	
-						@ printf "$(_INFO) Initialize $(NAME)\n"
+init:
+							@ printf "$(_INFO) Initialize $(NAME)\n"
 
-$(NAME):			$(OBJS)
-						@ $(CC) $(FLAG_COMP) -o $@ $(OBJS)
+$(NAME):					$(OBJS)
+								$(CC) $(FLAGS_COMP) -o $(NAME) $(OBJS) -I./inc  
 
-$(PATH_BUILD)/%.o:	%.cpp
-						@ mkdir -p $(dir $@)
-						@ $(CC) $(FLAG_COMP) -c $< -o $@
+.cpp.o:
+							@ $(CC) $(FLAGS_COMP) -c $< -o $@
 
-clean:					
-						@ $(RM) $(PATH_BUILD)
-						@ printf "$(_INFO) Deleted files and directory\n"
+clean:
+							@ $(RM) $(OBJS)
+							@ printf "$(_INFO) Deleted files and directory\n"
 
-fclean:				clean
-						@ $(RM) $(NAME)
+fclean:						clean
+							@ $(RM) $(NAME)
 
-re:					fclean all
+re:							fclean all
 
-.PHONY:			all clean fclean re
+# Debugging functions
 
--include $(DEPS)
+debug:						FLAGS_COMP += $(FLAG_MEM_LEAK)
+debug:						re
+
+
+.PHONY:						all clean fclean re

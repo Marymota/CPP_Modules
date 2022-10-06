@@ -35,6 +35,7 @@ Array<T>::Array(int len)
 	std::cout << "Default lengthy constructor" << std::endl;
 	_len = len;
 	_array = new T[_len];
+	std::cout << "len: " << _len << std::endl;
 }
 
 template <typename T>
@@ -46,15 +47,14 @@ Array<T>::Array(const Array& copy) {
 template <typename T>
 Array<T>& Array<T>::operator=(const Array<T>& copy) {
 	std::cout << "Assignment operator" << std::endl;
+	// if (_array != 0)
+	// 	delete[] _array;
 	_len = copy._len;
-	if (_len > 0) {
-		_array = new T[_len];
-		for(int i = 0; i < _len; i++) {
-			_array[i] = copy._array[i];
-		}
+	_array = new T[_len];
+	std::cout << "len: " << _len << std::endl;
+	for(int i = 0; i < _len; i++) {
+		_array[i] = copy._array[i];
 	}
-	else
-		_array = 0;
 	return *this;
 }
 

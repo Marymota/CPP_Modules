@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Array.hpp"
 
-#define MAX_VAL 750
+ #define MAX_VAL 750
 
 int main (int, char**)
 {
@@ -14,7 +14,7 @@ int main (int, char**)
 		std::cout << error.what() << std::endl;
 	}
 
-	Array<int> full(10);
+	Array<int> full(20);
 
 	try {
 		std::cout << "size: " << full.size() << std::endl;
@@ -46,6 +46,7 @@ int main (int, char**)
 		std::cout << "Pokemon: " << pokemon[0] << std::endl;
 		std::cout << "Pokemon: " << pokeball[1] << std::endl;
 		std::cout << "Pokemon: " << pokemonster[2] << std::endl;
+		std::cout << "test" << std::endl;
 	}
 	catch (std::exception &error) {
 		std::cout << error.what() << std::endl;
