@@ -12,8 +12,6 @@ class Whatever {
 		~Whatever() {}
 };
 
-std::ostream& operator<<(std::ostream&, const Whatever&);
-
 // Does not return so it needs to pass arguments as reference 
 template <class T>
 void swap(T& x, T& y) 
