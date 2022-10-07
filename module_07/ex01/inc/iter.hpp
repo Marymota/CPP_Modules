@@ -5,16 +5,16 @@
 #include <cmath>
 
 // EVALUATION TEST
- class Awesome
- {
- 	public:
- 		Awesome( void ) : _n( 42 ) { return; }
- 		int get( void ) const { return this->_n; }
- 	private:
- 		int _n;
- };
- 
- std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+// class Awesome
+// {
+// 	public:
+// 		Awesome( void ) : _n( 42 ) { return; }
+// 		int get( void ) const { return this->_n; }
+// 	private:
+// 		int _n;
+// };
+// 
+// std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
 
 template< typename T >
 void print( T const & x ) { std::cout << x << std::endl; return; }
@@ -23,6 +23,12 @@ void print( T const & x ) { std::cout << x << std::endl; return; }
 
 template< typename T >
 void mult( T const & x ) { std::cout << x * 2 << std::endl; return; }
+
+template< typename T >
+void firstletter(T const & str) {
+	std::cout << str[0];
+	return;
+}
 
 template <typename T>
 void iter(T* array, int len, void (*func)(T const&)) {

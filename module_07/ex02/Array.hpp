@@ -25,7 +25,7 @@ class Array {
 template <typename T>
 Array<T>::Array(){
 	std::cout << "Default empty constructor" << std::endl;
-	_array = 0;
+	_array = new T[ 0 ];
 	_len = 0;
 }
 
@@ -39,6 +39,7 @@ Array<T>::Array(int len)
 
 template <typename T>
 Array<T>::Array(const Array& copy) {
+	_len = 0;
 	std::cout << "Copy constructor" << std::endl;
 	*this = copy;
 }
@@ -46,15 +47,13 @@ Array<T>::Array(const Array& copy) {
 template <typename T>
 Array<T>& Array<T>::operator=(const Array<T>& copy) {
 	std::cout << "Assignment operator" << std::endl;
+	if ( _len > 0 )
+		delete[] _array;
 	_len = copy._len;
-	if (_len > 0) {
-		_array = new T[_len];
-		for(int i = 0; i < _len; i++) {
-			_array[i] = copy._array[i];
-		}
+	_array = new T[_len];
+	for(int i = 0; i < _len; i++) {
+		_array[i] = copy._array[i];
 	}
-	else
-		_array = 0;
 	return *this;
 }
 
@@ -80,3 +79,7 @@ int Array<T>::size() {
 }
 
 #endif
+
+// Sometimes, class variables need to be defined in the copy constructor.
+// If not, they can be filled with random values that gives undefined behaviour!
+// In those cases, we can have segfaults that just ocurr sometimes 

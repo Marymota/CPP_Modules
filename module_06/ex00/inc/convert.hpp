@@ -16,9 +16,9 @@ class Convert {
 		~Convert();
 
 		void setChar(char* arg);
-		void setInt();
-		void setFloat();
-		void setDouble();
+		void setInt(std::string str);
+		void setFloat(std::string str);
+		void setDouble(std::string str);
 
 		void getType(char *, std::string);
 

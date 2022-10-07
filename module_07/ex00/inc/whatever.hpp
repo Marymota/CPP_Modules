@@ -3,6 +3,15 @@
 
 #include <iostream>
 
+class Whatever {
+
+	public:
+		Whatever() {}
+		Whatever(Whatever& obj) { *this = obj; }
+		Whatever& operator=(Whatever& obj)  {*this = obj; return *this;}
+		~Whatever() {}
+};
+
 // Does not return so it needs to pass arguments as reference 
 template <class T>
 void swap(T& x, T& y) 
