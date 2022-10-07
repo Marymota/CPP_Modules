@@ -18,14 +18,14 @@
 // };
 // 
 // std::ostream & operator<<(std::ostream & o, const Awesome &a) { o << a.get_n(); return o; }
-// 
-// void testClass() {
-// 	Awesome a(2), b(4);
-// 	swap(a, b);
-// 	std::cout << "a = " << a << ", b = " << b << std::endl;
-// 	std::cout << "max( a, b ) = " << max(a, b) << std::endl;
-// 	std::cout << "min( a, b ) = " << min(a, b) << std::endl;
-// }
+ 
+ void testClass() {
+ 	Awesome a(2), b(4);
+ 	swap(a, b);
+ 	std::cout << "a = " << a << ", b = " << b << std::endl;
+ 	std::cout << "max( a, b ) = " << max(a, b) << std::endl;
+ 	std::cout << "min( a, b ) = " << min(a, b) << std::endl;
+ }
 
 int main( void ) {
 	int a = 2;
@@ -42,7 +42,8 @@ int main( void ) {
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 
-	// testClass();
+	std::cout << std::endl;
+	//testClass();
 	return 0;
 }
 
