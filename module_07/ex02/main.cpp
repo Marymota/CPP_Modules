@@ -69,33 +69,62 @@
 
  int main (int, char**)
  {
- 	Array<int> empty;
- 
+	
+	std::cout << std::endl;
+	std::cout << "EMPTY"<< std::endl;
  	try {
- 		std::cout << "size: " << empty.size() << std::endl;
+		Array<int> empty(0);
+ 		std::cout << "empty size: " << empty.size() << std::endl;
+		std::cout << "empty[0]: " << empty[0] << std::endl;
  	}
  	catch (std::exception &error) {
  		std::cout << error.what() << std::endl;
  	}
- 
- 	Array<int> full(20);
- 
- 	try {
- 		std::cout << "size: " << full.size() << std::endl;
+
+	// --------------------------------------------------------------------------
+
+	std::cout << std::endl;
+	std::cout << "NEGATIVE"<< std::endl;
+	try {
+		Array<int> empty(-10);
+ 		std::cout << "empty size: " << empty.size() << std::endl;
+		std::cout << "empty[0]: " << empty[0] << std::endl;
  	}
  	catch (std::exception &error) {
  		std::cout << error.what() << std::endl;
  	}
- 
- 	Array<long> longArr(20);
- 
+
+	// --------------------------------------------------------------------------
+
+	std::cout << std::endl;
+	std::cout << "FULL INT"<< std::endl;
  	try {
+		Array<int> full(20);
+		full[0] = 10;
+ 		std::cout << "full size: " << full.size() << std::endl;
+		std::cout << "full[0]: " << full[0] << std::endl;
+ 	}
+ 	catch (std::exception &error) {
+ 		std::cout << error.what() << std::endl;
+ 	}
+
+	// --------------------------------------------------------------------------
+
+	std::cout << std::endl;
+	std::cout << "FULL LONG"<< std::endl;
+ 	try {
+		Array<long> longArr(20);
  		std::cout << "size: " << longArr.size() << std::endl;
  	}
  	catch (std::exception &error) {
  		std::cout << error.what() << std::endl;
  	}
- 
+
+	// --------------------------------------------------------------------------
+
+	std::cout << std::endl;
+ 	std::cout << "STRINGS"<< std::endl;
+
  	Array<std::string> pokemon(3);
  
  	pokemon[0] = "Bulbasaur";

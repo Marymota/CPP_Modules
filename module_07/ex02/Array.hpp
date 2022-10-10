@@ -8,19 +8,21 @@ template <typename T>
 class Array {
 
 	private:
-		int _len;
+		unsigned int _len;
 		T* _array;
 
 	public:
 		Array<T>();
-		Array<T>(int);
+		Array<T>(unsigned int);
 		Array<T>(const Array<T>&);
 		Array<T>& operator=(const Array<T>&);
 		T& operator[](int);
 		~Array<T>();
 
+		T getArray(int);
+
 		int size();
-};
+}; 
 
 template <typename T>
 Array<T>::Array(){
@@ -30,28 +32,33 @@ Array<T>::Array(){
 }
 
 template <typename T>
-Array<T>::Array(int len)
+Array<T>::Array(unsigned int len)
 {
-	std::cout << "Default lengthy constructor" << std::endl;
-	_len = len;
-	_array = new T[_len];
+	//	std::cout << "Default lengthy constructor" << std::endl;
+	if ((int)len < 0)
+		throw std::exception();
+	else {
+		_len = len;
+		_array = new T[_len];
+	}
 }
 
 template <typename T>
 Array<T>::Array(const Array& copy) {
 	_len = 0;
-	std::cout << "Copy constructor" << std::endl;
+//	std::cout << "Copy constructor" << std::endl;
 	*this = copy;
 }
 
 template <typename T>
 Array<T>& Array<T>::operator=(const Array<T>& copy) {
-	std::cout << "Assignment operator" << std::endl;
+//	std::cout << "Assignment operator" << std::endl;
 	if ( _len > 0 )
 		delete[] _array;
 	_len = copy._len;
 	_array = new T[_len];
-	for(int i = 0; i < _len; i++) {
+	int len = static_cast<int>(_len);
+	for(int i = 0; i < len; i++) {
 		_array[i] = copy._array[i];
 	}
 	return *this;
@@ -59,8 +66,9 @@ Array<T>& Array<T>::operator=(const Array<T>& copy) {
 
 template <typename T>
 T& Array<T>::operator[](int i) {
-	if (i >= _len || i < 0) {
-		std::cout << i << std::endl;
+	int len = static_cast<int>(_len);
+	if (i >= len || i < 0) {
+	//	std::cout << i << std::endl;
 		throw std::exception();
 	}
 	else 
@@ -69,7 +77,7 @@ T& Array<T>::operator[](int i) {
 
 template <typename T>
 Array<T>::~Array() {
-	std::cout << "Destroyer Constructor" << std::endl;
+//	std::cout << "Destroyer Constructor" << std::endl;
 	delete[] _array;
 }
 
@@ -77,6 +85,7 @@ template <typename T>
 int Array<T>::size() {
 	return _len;
 }
+
 
 #endif
 
