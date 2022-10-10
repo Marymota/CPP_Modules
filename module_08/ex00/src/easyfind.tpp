@@ -7,7 +7,10 @@ template <typename T>
 void easyfind(T container, int n) {
 
 	std::vector<int>::iterator it;
-	std::vector<int> myvector (container, container+5);
+	int i = 0;
+	while (container[i] != 0)
+		i++;
+	std::vector<int> myvector (container, container+i);
 
 	it = std::find(myvector.begin(), myvector.end(), n);
 	if (it != myvector.end())
@@ -15,3 +18,4 @@ void easyfind(T container, int n) {
 	else
 		std::cout << "Not found!" << std::endl;
 }
+
