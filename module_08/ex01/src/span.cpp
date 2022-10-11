@@ -1,13 +1,11 @@
 #include "../inc/span.hpp"
 
     Span::Span() : _max(0){
-        std::cout << "Default constructor" << std::endl;
         std::vector<int> _vector (0,0);
         _it = _vector.begin();
     };
 
     Span::Span(unsigned int N) : _max(N){
-        std::cout << "Lenghy constructor" << std::endl;
         _vector = std::vector<int> (N,0);
         _it = _vector.begin();
     };
@@ -37,16 +35,15 @@
             throw NoSpace();
     };
 
-    void shortestSpan(){};
+    int Span::shortestSpan(){
+        return (0);
+    }
 
     int Span::longestSpan(){
         std::vector<int>::iterator max;
         std::vector<int>::iterator min;
         max = std::max_element(_vector.begin(), _vector.end());
         min = std::min_element(_vector.begin(), _vector.end());
-
-        std::cout << "min span: " << (int)*min << std::endl;
-        std::cout << "max span: " << (int)*max << std::endl;
 
         return ((int)*max - (int)*min);
     };
