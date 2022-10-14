@@ -6,6 +6,7 @@
 #include <vector>
 #include <iterator>
 #include <exception>
+#include <cstdlib>
 
 class Span {
     public:
@@ -16,6 +17,7 @@ class Span {
         ~Span();
 
         void addNumber(int);
+				void addNumber(int, long);
         int shortestSpan();
         int longestSpan();
 
@@ -25,7 +27,17 @@ class Span {
         class NoSpace : public std::exception {
 	        public:
 		        const char* what() const throw();
-};
+				};
+
+				class NoSpan : public std::exception {
+	        public:
+		        const char* what() const throw();
+				};
+
+				class UndefinedValues : public std::exception {
+	        public:
+		        const char* what() const throw();
+				};
 
     private:
         unsigned int _max;
