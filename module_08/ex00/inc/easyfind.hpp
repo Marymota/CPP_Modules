@@ -5,6 +5,7 @@
 #include <algorithm>	// std::find
 #include <iterator>		// std::iterator
 #include <vector>
+#include <exception>
 
 template <typename T>
 void easyfind(T container, int n) {
@@ -20,6 +21,8 @@ void easyfind(T container, int n) {
 	if (std::binary_search(container.begin(), container.end(), n))
 		std::cout << "Found!" << std::endl;
 	else
-		std::cout << "Not found!" << std::endl;
+		throw std::invalid_argument("Value not found!");
+
 }
+
 #endif
