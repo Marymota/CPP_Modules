@@ -1,5 +1,4 @@
 #include "../inc/easyfind.hpp"
-#include "easyfind.tpp"
 
 int main () {
 
@@ -19,5 +18,4 @@ int main () {
 }
 
 // https://cplusplus.com/reference/vector/vector/ 
-
-// Create a vector and fill it with 'push_back' keyword 
+// studytonight.com/cpp/stl/stl-searching
