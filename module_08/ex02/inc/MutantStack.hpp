@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <cstdlib>
 #include <stack>
-#include <list>
 #include <algorithm>
 
 template<typename T>
