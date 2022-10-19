@@ -1,7 +1,26 @@
 #include "../inc/MutantStack.hpp"
 
-int main()
-{
+void otherTest() {
+	MutantStack<int> mstack;
+	mstack.push(100);
+	mstack.push(200);
+	mstack.push(300);
+	mstack.push(400);
+	mstack.push(500);
+	std::cout << "top: " << mstack.top() << std::endl;
+	std::cout << "size: " << mstack.size() << std::endl;
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	std::cout << "Last element: " << *ite << std::endl;
+	while (it != ite--) {
+		std::cout << *ite << std::endl;
+		mstack.pop();
+	}
+	if (mstack.empty())
+		std::cout << "Empty!" << std::endl;
+}
+
+void mainTest() {
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -23,6 +42,13 @@ int main()
 		++it;
 	}
 	std::stack<int> s(mstack);
+}
+
+int main()
+{
+	mainTest();
+	std::cout << std::endl;
+	otherTest();
 	return 0;
 }
 
