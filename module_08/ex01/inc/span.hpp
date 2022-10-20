@@ -7,6 +7,7 @@
 #include <iterator>
 #include <exception>
 #include <cstdlib>
+#include <limits>
 
 class Span {
     public:
@@ -17,12 +18,14 @@ class Span {
         ~Span();
 
         void addNumber(int);
-				void addNumber(int, long);
+		void addNumber(int, long);
         int shortestSpan();
         int longestSpan();
 
         int getElement(int);
         int size();
+
+        void print();
         
         class NoSpace : public std::exception {
 	        public:

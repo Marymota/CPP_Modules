@@ -36,16 +36,16 @@
 	};
 
 	void Span::addNumber(int len, long value) {
-		if ((int)_vector.size() > len)
+		if (value > std::numeric_limits<long>::max())
+			throw NoSpace();
+		if ((int)_vector.size() > len )
 			throw UndefinedValues();
-		std::cout << "values: ";
 		int magic;
 		srand(time(0));
 		if (len <= (long)_vector.size()) {
 			for(int i = 0; i < len; i++) {
 				magic = rand() % value;
 				std::fill_n(_it++, 1 , magic);
-				std::cout << magic << " ";
 			}
 		}
 		else
@@ -85,6 +85,12 @@
 
 	int Span::getElement(int i) {
 			return _vector[i];
+	}
+
+	void Span::print() {
+		for(std::vector<int>::iterator i = _vector.begin(); i < _vector.end(); i++)
+			std::cout <<  *i << " " ;
+		std::cout << std::endl;
 	}
 
 	const char* Span::NoSpace::what() const throw() {
